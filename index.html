@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - Restaurante La Corraleja</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-utensils"></i>
+                <div>
+                    <h1>RESTAURANTE - HOTEL - PISCINA</h1>
+                    <h2>LA CORRALEJA</h2>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Menú de navegación -->
+        <nav class="nav-menu">
+            <div class="container">
+                <div class="nav-dropdown">
+                    <button class="nav-btn" id="carnes-btn">CARNES <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content" id="carnes-dropdown">
+                        <a href="#carnes-res" class="dropdown-option">Res</a>
+                        <a href="#cerdo" class="dropdown-option">Cerdo</a>
+                        <a href="#pollo" class="dropdown-option">Pollo</a>
+                        <a href="#pescado" class="dropdown-option">Pescado</a>
+                    </div>
+                </div>
+                <a href="#picada" class="nav-link">PICADA</a>
+                <a href="#sancocho" class="nav-link">SANCOCHO</a>
+                <a href="#gallina" class="nav-link">GALLINA</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="menu-container">
+        <!-- Sección Carnes Res -->
+        <section id="carnes-res" class="menu-section">
+            <h2>CARNES RES</h2>
+            <div class="menu-items">
+                <!-- Tus tarjetas de carnes res aquí -->
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Carne a la Llanera">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Carne a la Llanera</h3>
+                        <p>Papa, yuca y guacamole (fines de semana)</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$26.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Churrasco">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Churrasco</h3>
+                        <p>Papa a la francesa, ensalada, chimichurri</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$28.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1558036117-15e82a2c9a9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Carne al Barril">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Carne al Barril</h3>
+                        <p>Carne de res, papa, yuca y guacamole (fines de semana)</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$30.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Las demás secciones continúan igual -->
+        <section id="cerdo" class="menu-section">
+            <h2>CERDO</h2>
+            <div class="menu-items">
+                <!-- Tarjetas de cerdo -->
+            </div>
+        </section>
+
+        <section id="picada" class="menu-section">
+            <h2>PICADA LA CORRALEJA</h2>
+            <div class="menu-items">
+                <!-- Tarjeta de picada -->
+            </div>
+        </section>
+
+        <section id="sancocho" class="menu-section">
+            <h2>SANCOCHO HUESO DE RES</h2>
+            <div class="menu-items">
+                <!-- Tarjeta de sancocho -->
+            </div>
+        </section>
+
+        <section id="gallina" class="menu-section">
+            <h2>GALLINA</h2>
+            <div class="menu-items">
+                <!-- Tarjetas de gallina -->
+            </div>
+        </section>
+
+        <section id="pollo" class="menu-section">
+            <h2>POLLO</h2>
+            <div class="menu-items">
+                <!-- Tarjetas de pollo -->
+            </div>
+        </section>
+
+        <section id="pescado" class="menu-section">
+            <h2>PESCADO</h2>
+            <div class="menu-items">
+                <!-- Tarjetas de pescado -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Restaurante - Hotel - Piscina La Corraleja. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Año actual en el footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Dropdown functionality
+        const carnesBtn = document.getElementById('carnes-btn');
+        const carnesDropdown = document.getElementById('carnes-dropdown');
+        const dropdownOptions = document.querySelectorAll('.dropdown-option');
+
+        // Toggle dropdown
+        carnesBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            carnesDropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking on an option
+        dropdownOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                carnesDropdown.classList.remove('active');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            carnesDropdown.classList.remove('active');
+        });
+
+        // Prevent dropdown from closing when clicking inside
+        carnesDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</body>
+</html>
