@@ -1,28 +1,213 @@
 /* menu.css - Estilos para la página de menú italiano */
 
 /* Estilos generales del menú */
-.menu-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/img/menu-bg.jpg');
-    background-size: cover;
-    background-position: center;
+.header {
+    background: linear-gradient(90deg, #1e88e5, #1565c0);
     color: white;
-    padding: 100px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    box-shadow: 0 4px 18px rgba(21, 101, 192, 0.12);
+}
+
+.header .header-inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
     text-align: center;
-    margin-bottom: 50px;
+}
+
+.logo-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+}
+
+.logo i {
+    font-size: 1.6rem;
+    color: #FFD166;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    margin: 0;
+    line-height: 1;
+}
+
+.nav-list {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 920px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    font-weight: 600;
+    transition: all .18s ease;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+/* Hero: ahora más compacto y sin imagen grande */
+.menu-hero {
+    background: linear-gradient(180deg, #fffdf8, #fff8ef);
+    color: #2b2b2b;
+    padding: 36px 20px;
+    text-align: center;
+    margin-bottom: 28px;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
 }
 
 .menu-hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    color: #3e3a39;
 }
 
 .menu-hero p {
-    font-size: 1.2rem;
-    max-width: 700px;
+    font-size: 1rem;
+    max-width: 820px;
     margin: 0 auto;
     line-height: 1.6;
+    color: #5b5b5b;
+}
+
+/* Scroll behavior: header se reduce al bajar */
+.header {
+    transition: padding 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+}
+
+.header.scrolled {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    background: linear-gradient(90deg,#1565c0,#0d47a1);
+}
+
+.header .logo i {
+    transition: transform 0.22s ease, font-size 0.22s ease;
+}
+
+.header.scrolled .logo i {
+    transform: scale(0.9);
+}
+
+.header .logo h1 {
+    transition: font-size 0.22s ease;
+}
+
+.header.scrolled .logo h1 {
+    font-size: 0.95rem;
+}
+
+.header.scrolled .nav-link {
+    padding: 6px 10px;
+}
+
+/* Dropdown styles */
+.nav-item-dropdown {
+    position: relative;
+}
+
+.nav-dropdown-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 8px 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: white;
+    text-decoration: none;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    font-weight: 600;
+    transition: all .18s ease;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.nav-dropdown-btn:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-2px);
+}
+
+.nav-dropdown-btn i {
+    transition: transform 0.22s ease;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border-radius: 8px;
+    list-style: none;
+    padding: 8px 0;
+    margin-top: 6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    min-width: 180px;
+    z-index: 1000;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px 16px;
+    color: #2b2b2b;
+    text-decoration: none;
+    transition: all 0.18s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.dropdown-link:hover {
+    background: #f0f0f0;
+    padding-left: 20px;
+}
+
+.dropdown-link:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.dropdown-link:last-child {
+    border-radius: 0 0 8px 8px;
 }
 
 .menu-container {
