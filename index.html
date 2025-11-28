@@ -3,81 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú - Restaurante La Corraleja</title>
+    <title>Menú Italiano - Ristorante Venezia</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-    <!-- HEADER -->
     <header class="header">
-        <div class="header-top">
-            <i class="fas fa-utensils logo-icon"></i>
-            <div class="header-title">
-                <h1>RESTAURANTE · HOTEL · PISCINA</h1>
-                <h2>LA CORRALEJA</h2>
-            </div>
+        <div class="container">
         </div>
-
-        <!-- NAV BAR -->
-        <nav class="nav-menu">
-            <button class="nav-btn" id="carnes-btn">
-                Carnes <i class="fas fa-chevron-down"></i>
-            </button>
-
-            <div class="dropdown-content" id="carnes-dropdown">
-                <a href="#carnes-res">Res</a>
-                <a href="#cerdo">Cerdo</a>
-                <a href="#pollo">Pollo</a>
-                <a href="#pescado">Pescado</a>
-            </div>
-
-            <a href="#picada" class="nav-link">Picada</a>
-            <a href="#sancocho" class="nav-link">Sancocho</a>
-            <a href="#gallina" class="nav-link">Gallina</a>
-        </nav>
     </header>
 
-    <!-- CONTENIDO -->
+    <section class="menu-hero">
+        <div class="container">
+            <h1>Menú Italiano</h1>
+            <p>Sabores auténticos de Italia preparados con los ingredientes más frescos y técnicas tradicionales</p>
+        </div>
+    </section>
+
     <main class="menu-container">
 
-        <!-- RES -->
-        <section id="carnes-res" class="menu-section">
+        <!-- CARNES RES -->
+        <section class="menu-section">
             <h2>Carnes de Res</h2>
-
             <div class="menu-items">
 
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1604908177527-4020c9a3ad8c?auto=format&fit=crop&w=1200"
-                         alt="Carne a la llanera">
-                    <div class="menu-text">
-                        <h3>Carne a la Llanera</h3>
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?auto=format&fit=crop&w=1000&q=80" alt="Carne a la llanera">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Carne a la llanera</h3>
                         <p>Papa, yuca y guacamole (fines de semana)</p>
-                        <span class="price">$26.000</span>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$26.000</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1604908554075-09abfcbfbd01?auto=format&fit=crop&w=1200"
-                         alt="Churrasco">
-                    <div class="menu-text">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=1000&q=80" alt="Churrasco">
+                    </div>
+                    <div class="menu-item-content">
                         <h3>Churrasco</h3>
                         <p>Papa a la francesa, ensalada, chimichurri</p>
-                        <span class="price">$28.000</span>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$28.000</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1601314003273-fbbf89f480c8?auto=format&fit=crop&w=1200"
-                         alt="Carne al barril">
-                    <div class="menu-text">
-                        <h3>Carne al Barril</h3>
-                        <p>Incluye papa, yuca y guacamole</p>
-                        <span class="price">$30.000</span>
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=1000&q=80" alt="Carne al barril">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Carne al barril</h3>
+                        <p>Carne de res, papa, yuca y guacamole (fines de semana)</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$30.000</span>
+                        </div>
                     </div>
                 </div>
 
@@ -85,119 +71,314 @@
         </section>
 
         <!-- CERDO -->
-        <section id="cerdo" class="menu-section">
+        <section class="menu-section">
             <h2>Cerdo</h2>
             <div class="menu-items">
-                <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1601924582975-7e1b265ea8f6?auto=format&fit=crop&w=1200"
-                         alt="Cerdo">
-                    <div class="menu-text">
-                        <h3>Chuleta de Cerdo</h3>
-                        <p>Ensalada fresca, papa o yuca</p>
-                        <span class="price">$22.000</span>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- PICADA -->
-        <section id="picada" class="menu-section">
-            <h2>Picada La Corraleja</h2>
-            <div class="menu-items">
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=1200"
-                         alt="Picada">
-                    <div class="menu-text">
-                        <h3>Picada Especial</h3>
-                        <p>Res, cerdo, pollo, papa, yuca y chorizo</p>
-                        <span class="price">$55.000</span>
+                    <div class="menu-item-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJGM3rSoatenORO4xCBNUXO7uMIsx226Fmdg&s" alt="Lomo de cerdo">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Lomo de cerdo a la plancha</h3>
+                        <p>Papa a la francesa, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$28.000</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- SANCOCHO -->
-        <section id="sancocho" class="menu-section">
-            <h2>Sancocho de Res</h2>
-            <div class="menu-items">
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1633436379240-cd77b5059d76?auto=format&fit=crop&w=1200"
-                         alt="Sancocho">
-                    <div class="menu-text">
-                        <h3>Sancocho de Hueso de Res</h3>
-                        <p>Con arroz y aguacate</p>
-                        <span class="price">$18.000</span>
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=80" alt="Costillas BBQ">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Costillas a la BBQ</h3>
+                        <p>Papa a la francesa, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$20.000</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- GALLINA -->
-        <section id="gallina" class="menu-section">
-            <h2>Gallina</h2>
-            <div class="menu-items">
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1617191518408-7eefecbba940?auto=format&fit=crop&w=1200"
-                         alt="Gallina">
-                    <div class="menu-text">
-                        <h3>Gallina Criolla</h3>
-                        <p>Arroz, yuca y ensalada</p>
-                        <span class="price">$40.000</span>
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=1000&q=80" alt="Chicharrón Raisa">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Chicharrón Raisa</h3>
+                        <p>Papa criolla, patacona, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$25.000</span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
         <!-- POLLO -->
-        <section id="pollo" class="menu-section">
+        <section class="menu-section">
             <h2>Pollo</h2>
             <div class="menu-items">
+
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1604909052968-96f8aeecc443?auto=format&fit=crop&w=1200"
-                         alt="Pollo">
-                    <div class="menu-text">
-                        <h3>Pechuga a la Plancha</h3>
-                        <p>Papa a la francesa y ensalada</p>
-                        <span class="price">$20.000</span>
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1000&q=80" alt="Pechuga a la plancha">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Pechuga a la plancha</h3>
+                        <p>Papa a la francesa, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$25.000</span>
+                        </div>
                     </div>
                 </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?auto=format&fit=crop&w=1000&q=80" alt="Alitas a la BBQ">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Alitas a la BBQ</h3>
+                        <p>Papa a la francesa</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$25.000</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
         <!-- PESCADO -->
-        <section id="pescado" class="menu-section">
+        <section class="menu-section">
             <h2>Pescado</h2>
             <div class="menu-items">
+
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1627662057417-a62a7c82c90b?auto=format&fit=crop&w=1200"
-                         alt="Pescado">
-                    <div class="menu-text">
-                        <h3>Mojarra Frita</h3>
-                        <p>Patacones, arroz y ensalada</p>
-                        <span class="price">$25.000</span>
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=1000&q=80" alt="Cachama frita">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Cachama frita</h3>
+                        <p>Patacona, arroz, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$30.000</span>
+                        </div>
                     </div>
                 </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80" alt="Cachama en salsa">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Cachama en salsa</h3>
+                        <p>Patacona, arroz, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$30.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80" alt="Mojarra frita">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Mojarra frita</h3>
+                        <p>Patacona, arroz, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$32.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80" alt="Mojarra en salsa">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Mojarra en salsa</h3>
+                        <p>Patacona, arroz, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$32.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80" alt="Amarillo frito">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Amarillo frito o en salsa</h3>
+                        <p>Patacona, arroz, ensalada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$32.000</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: COMIDAS RÁPIDAS -->
+        <section class="menu-section">
+            <h2>Comidas Rápidas</h2>
+            <div class="menu-items">
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1000&q=80" alt="Hamburguesa de carne">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Hamburguesa de carne</h3>
+                        <p></p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$15.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80" alt="Salchipapa">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Salchipapa</h3>
+                        <p></p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$13.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=1000&q=80" alt="Suizo">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Suizo</h3>
+                        <p></p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$15.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80" alt="Chori papa">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Chori papa</h3>
+                        <p></p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$15.000</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PICADA -->
+        <section class="menu-section">
+            <h2>Picada La Corraleja</h2>
+            <div class="menu-items">
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://www.lavanguardia.com/files/og_thumbnail/uploads/2019/12/05/5e9976f33136c.jpeg" alt="Picada">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Picada (2) Personas</h3>
+                        <p>Carne de res, cerdo, pollo, chorizo, papa a la francesa, plátano chips, cebolla caramelizada</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$30.000</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SANCOCHO -->
+        <section class="menu-section">
+            <h2>Sancocho hueso de res</h2>
+            <div class="menu-items">
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80" alt="Sancocho">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Sancocho de hueso de res</h3>
+                        <p>(Fines de semana)</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$7.000</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- GALLINA -->
+        <section class="menu-section">
+            <h2>Gallina</h2>
+            <div class="menu-items">
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80" alt="Piquete gallina">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Piquete gallina ponedora</h3>
+                        <p>Guacamole, arroz, papa, yuca en guiso criollo, cuatro tazas de consomé (domingos y festivos)</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$65.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="menu-item-img">
+                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80" alt="Media gallina">
+                    </div>
+                    <div class="menu-item-content">
+                        <h3>Media gallina ponedora</h3>
+                        <p>Ensalada, arroz, papa, yuca en guiso criollo, dos tazas de consomé (fines de semana)</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">$35.000</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
-        &copy; <span id="year"></span> Restaurante La Corraleja
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> Restaurante Delicioso. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
-<script>
-    document.getElementById("year").innerText = new Date().getFullYear();
-
-    const btn = document.getElementById("carnes-btn");
-    const drop = document.getElementById("carnes-dropdown");
-
-    btn.onclick = () => drop.classList.toggle("active");
-    document.addEventListener("click", (e) => {
-        if (!btn.contains(e.target)) drop.classList.remove("active");
-    });
-</script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.querySelector('.menu-hero').style.backgroundImage =
+            "linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), " +
+            "url('https://images.unsplash.com/photo-1516100882582-96c3a05fe590?auto=format&fit=crop&w=1000&q=80')";
+    </script>
 
 </body>
 </html>
+
+
+
+
+
