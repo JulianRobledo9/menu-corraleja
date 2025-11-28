@@ -404,6 +404,33 @@
             const dropdownBtns = document.querySelectorAll('.nav-dropdown-btn');
             const body = document.body;
 
+            // Función para ajustar la posición del dropdown
+            function adjustDropdownPosition(dropdown) {
+                setTimeout(() => {
+                    const rect = dropdown.getBoundingClientRect();
+                    const viewportWidth = window.innerWidth;
+                    
+                    // Si el dropdown se sale por la derecha
+                    if (rect.right > viewportWidth) {
+                        dropdown.style.left = 'auto';
+                        dropdown.style.right = '0';
+                        dropdown.style.transform = 'none';
+                    }
+                    // Si el dropdown se sale por la izquierda
+                    else if (rect.left < 0) {
+                        dropdown.style.left = '0';
+                        dropdown.style.right = 'auto';
+                        dropdown.style.transform = 'none';
+                    }
+                    // Si está bien centrado
+                    else {
+                        dropdown.style.left = '50%';
+                        dropdown.style.right = 'auto';
+                        dropdown.style.transform = 'translateX(-50%)';
+                    }
+                }, 0);
+            }
+
             dropdownBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -417,7 +444,12 @@
                     });
 
                     // Toggle el dropdown actual
-                    if (dropdown) dropdown.classList.toggle('active');
+                    if (dropdown) {
+                        dropdown.classList.toggle('active');
+                        if (dropdown.classList.contains('active')) {
+                            adjustDropdownPosition(dropdown);
+                        }
+                    }
                     
                     // Rotar el icono
                     const icon = btn.querySelector('i');
@@ -448,6 +480,13 @@
                         icon.style.transform = 'rotate(0deg)';
                     });
                 }
+            });
+
+            // Ajustar posición de dropdowns al cambiar el tamaño de la ventana
+            window.addEventListener('resize', () => {
+                document.querySelectorAll('.dropdown-menu.active').forEach(dropdown => {
+                    adjustDropdownPosition(dropdown);
+                });
             });
         })();
 
