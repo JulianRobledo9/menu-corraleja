@@ -33,9 +33,11 @@
     width: 60px;
     height: 60px;
     border-radius: 8px;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
     flex-shrink: 0;
+    background: white;
+    padding: 2px;
 }
 
 .logo-svg {
