@@ -38,6 +38,14 @@
     flex-shrink: 0;
 }
 
+.logo-svg {
+    width: 60px;
+    height: 60px;
+    display: block;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
 .logo i {
     font-size: 1.6rem;
     color: #FFD166;
