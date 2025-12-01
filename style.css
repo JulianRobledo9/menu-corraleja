@@ -201,14 +201,17 @@
 
 .dropdown-menu {
     display: none;
-    position: fixed;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
     background: white;
     border-radius: 10px;
     list-style: none;
     padding: 12px 0;
     box-shadow: 0 6px 20px rgba(0,0,0,0.15);
     min-width: 220px;
-    max-width: 90vw;
     z-index: 2000;
     max-height: 70vh;
     overflow-y: auto;
