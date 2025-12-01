@@ -427,19 +427,46 @@
                 });
             });
 
-            // Cerrar dropdowns al hacer clic en un enlace (permite navegación natural)
-            const dropdownLinks = document.querySelectorAll('.dropdown-link');
-            dropdownLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    // Permitir la navegación natural del enlace
-                    setTimeout(() => {
+            // Manejar clicks en enlaces ancla y alinear la sección bajo el header
+            (function() {
+                const header = document.querySelector('.header');
+                const anchorLinks = document.querySelectorAll('a.nav-link[href^="#"], a.dropdown-link[href^="#"]');
+
+                function scrollToId(id, smooth = true) {
+                    if (!id) return;
+                    const el = document.getElementById(id.replace('#', ''));
+                    if (!el) return;
+                    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+                    const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - headerHeight - 6);
+                    window.scrollTo({ top, behavior: smooth ? 'smooth' : 'auto' });
+                }
+
+                anchorLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const href = link.getAttribute('href');
+                        if (!href || !href.startsWith('#')) return;
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const id = href.slice(1);
+
+                        // Cerrar dropdowns si aplican
                         document.querySelectorAll('.dropdown-menu.active').forEach(d => d.classList.remove('active'));
-                        document.querySelectorAll('.nav-dropdown-btn i').forEach(icon => {
-                            icon.style.transform = 'rotate(0deg)';
-                        });
-                    }, 100);
+                        document.querySelectorAll('.nav-dropdown-btn i').forEach(icon => icon.style.transform = 'rotate(0deg)');
+
+                        // Hacer scroll y actualizar hash sin salto
+                        scrollToId(id, true);
+                        history.pushState(null, '', '#' + id);
+                    });
                 });
-            });
+
+                // Manejar cambios de hash (back/forward)
+                window.addEventListener('hashchange', () => {
+                    scrollToId(location.hash, false);
+                });
+
+                // Si la página carga con hash, ajustar después de un pequeño retraso
+                if (location.hash) setTimeout(() => scrollToId(location.hash, false), 80);
+            })();
 
             // Cerrar dropdowns al hacer clic fuera
             document.addEventListener('click', (e) => {
