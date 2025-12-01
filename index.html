@@ -404,30 +404,35 @@
             const dropdownBtns = document.querySelectorAll('.nav-dropdown-btn');
             const body = document.body;
 
-            // Función para ajustar la posición del dropdown
+            // Función para ajustar la posición del dropdown con position: fixed
             function adjustDropdownPosition(dropdown) {
                 setTimeout(() => {
-                    const rect = dropdown.getBoundingClientRect();
+                    // Encontrar el botón que abre este dropdown
+                    const btn = document.querySelector(`[data-dropdown="${dropdown.id}"]`);
+                    if (!btn) return;
+
+                    const btnRect = btn.getBoundingClientRect();
+                    const dropdownHeight = dropdown.offsetHeight;
                     const viewportWidth = window.innerWidth;
-                    
-                    // Si el dropdown se sale por la derecha
-                    if (rect.right > viewportWidth) {
-                        dropdown.style.left = 'auto';
-                        dropdown.style.right = '0';
-                        dropdown.style.transform = 'none';
+                    const viewportHeight = window.innerHeight;
+
+                    // Posición base: debajo del botón, centrado horizontalmente
+                    let left = btnRect.left + btnRect.width / 2;
+                    let top = btnRect.bottom + 8; // 8px de espacio
+
+                    // Si el dropdown se sale por la derecha, alinearlo a la derecha del botón
+                    if (left + 110 > viewportWidth) { // 110 es aprox media del dropdown
+                        left = btnRect.right - 220; // 220 es el min-width del dropdown
+                        if (left < 10) left = 10; // Mínimo margin
                     }
-                    // Si el dropdown se sale por la izquierda
-                    else if (rect.left < 0) {
-                        dropdown.style.left = '0';
-                        dropdown.style.right = 'auto';
-                        dropdown.style.transform = 'none';
+
+                    // Si el dropdown se sale por abajo, ponerlo arriba del botón
+                    if (top + dropdownHeight > viewportHeight - 10) {
+                        top = btnRect.top - dropdownHeight - 8;
                     }
-                    // Si está bien centrado
-                    else {
-                        dropdown.style.left = '50%';
-                        dropdown.style.right = 'auto';
-                        dropdown.style.transform = 'translateX(-50%)';
-                    }
+
+                    dropdown.style.left = left + 'px';
+                    dropdown.style.top = top + 'px';
                 }, 0);
             }
 
