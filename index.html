@@ -412,23 +412,30 @@
                     if (!btn) return;
 
                     const btnRect = btn.getBoundingClientRect();
+                    const dropdownWidth = Math.min(dropdown.offsetWidth, window.innerWidth * 0.95);
                     const dropdownHeight = dropdown.offsetHeight;
                     const viewportWidth = window.innerWidth;
                     const viewportHeight = window.innerHeight;
+                    const padding = 10; // Margen mínimo a los bordes
 
                     // Posición base: debajo del botón, centrado horizontalmente
-                    let left = btnRect.left + btnRect.width / 2;
+                    let left = btnRect.left + btnRect.width / 2 - dropdownWidth / 2;
                     let top = btnRect.bottom + 8; // 8px de espacio
 
-                    // Si el dropdown se sale por la derecha, alinearlo a la derecha del botón
-                    if (left + 110 > viewportWidth) { // 110 es aprox media del dropdown
-                        left = btnRect.right - 220; // 220 es el min-width del dropdown
-                        if (left < 10) left = 10; // Mínimo margin
+                    // Ajustar si se sale por los lados
+                    if (left < padding) {
+                        left = padding;
+                    } else if (left + dropdownWidth > viewportWidth - padding) {
+                        left = viewportWidth - dropdownWidth - padding;
                     }
 
                     // Si el dropdown se sale por abajo, ponerlo arriba del botón
-                    if (top + dropdownHeight > viewportHeight - 10) {
+                    if (top + dropdownHeight > viewportHeight - padding) {
                         top = btnRect.top - dropdownHeight - 8;
+                        // Si tampoco cabe arriba, simplemente dejar en la posición original y confiar en overflow-y
+                        if (top < padding) {
+                            top = btnRect.bottom + 8;
+                        }
                     }
 
                     dropdown.style.left = left + 'px';

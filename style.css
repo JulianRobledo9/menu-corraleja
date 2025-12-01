@@ -13,7 +13,6 @@
     right: 0;
     z-index: 999;
     box-shadow: 0 4px 18px rgba(21, 101, 192, 0.12);
-    overflow: hidden;
 }
 
 .header .header-inner {
@@ -400,8 +399,8 @@
 
     .dropdown-menu {
         min-width: 200px;
-        left: 50%;
-        transform: translateX(-50%);
+        max-width: 95vw;
+        max-height: 60vh;
     }
 
     .dropdown-link {
@@ -494,9 +493,9 @@
 
     /* Dropdowns ocupan buena parte de la pantalla y son legibles */
     .dropdown-menu {
-        min-width: 220px;
-        left: 50%;
-        transform: translateX(-50%);
+        min-width: 160px;
+        max-width: 95vw;
+        max-height: 65vh;
         padding: 12px 0;
     }
 
