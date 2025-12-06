@@ -20,8 +20,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
-    padding: 24px 20px;
+    gap: 12px;
+    padding: 16px 20px;
     position: relative;
     z-index: 2; /* Content above overlay */
 }
@@ -73,20 +73,13 @@
 
 .logo h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.9rem;
+    font-size: 2.4rem;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
     font-weight: 800; /* Más grueso para mejor visibilidad */
-    letter-spacing: 0.6px;
-}
-
-/* Make the title more visible against the header image */
-.logo h1 {
-    display: inline-block;
-    background: rgba(0,0,0,0.45);
-    padding: 6px 12px;
-    border-radius: 8px;
-    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    letter-spacing: 0.8px;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .nav-list {
@@ -105,16 +98,17 @@
 .nav-link {
     color: #fff;
     text-decoration: none;
-    padding: 14px 24px;
+    padding: 11px 18px;
     border-radius: 999px;
     /* Stronger, darker translucent background to contrast with image */
     background: rgba(0,0,0,0.42);
     font-weight: 700; /* Aumentar grosor */
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-family: 'Poppins', sans-serif; /* Fuente más moderna y legible para botones */
     transition: all .18s ease;
     border: 1px solid rgba(255,255,255,0.08);
     backdrop-filter: blur(4px);
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -189,7 +183,7 @@
     border: 1px solid rgba(255,255,255,0.08);
     background: rgba(0,0,0,0.42);
     cursor: pointer;
-    padding: 14px 24px;
+    padding: 11px 18px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -197,9 +191,11 @@
     text-decoration: none;
     border-radius: 999px;
     font-weight: 700; /* Aumentar grosor */
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-family: 'Poppins', sans-serif;
     transition: all .18s ease;
+    white-space: nowrap;
+    backdrop-filter: blur(4px);
 }
 
 .nav-dropdown-btn:hover {
@@ -383,8 +379,8 @@
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .header .header-inner {
-        gap: 14px;
-        padding: 20px 12px;
+        gap: 12px;
+        padding: 14px 12px;
     }
 
     .logo {
@@ -392,23 +388,23 @@
     }
 
     .logo-img {
-        width: 90px;
-        height: 90px;
+        width: 80px;
+        height: 80px;
     }
 
     .logo h1 {
-        font-size: 2.1rem;
+        font-size: 2rem;
     }
 
     .nav-list {
-        gap: 10px;
+        gap: 8px;
         max-width: 100%;
     }
 
     .nav-link,
     .nav-dropdown-btn {
-        padding: 12px 22px;
-        font-size: 0.95rem;
+        padding: 10px 14px;
+        font-size: 0.88rem;
         white-space: nowrap;
     }
 
@@ -477,36 +473,36 @@
 }
 
 @media (max-width: 480px) {
-    /* Más espacio y tamaños grandes para móviles pequeños */
+    /* Navbar compacto pero con título grande */
     .header .header-inner {
-        gap: 18px;
-        padding: 20px 12px;
+        gap: 12px;
+        padding: 14px 10px;
     }
 
-    /* Logo mucho más grande para móviles (mejor visibilidad) */
+    /* Logo más pequeño para dejar espacio al título */
     .logo-img {
-        width: 110px;
-        height: 110px;
+        width: 75px;
+        height: 75px;
     }
 
     .logo h1 {
-        font-size: 2.3rem;
+        font-size: 2.1rem;
     }
 
     .nav-list {
-        gap: 10px;
+        gap: 6px;
         flex-wrap: wrap;
     }
 
-    /* Botones más grandes y fáciles de tocar */
+    /* Botones pequeños para distribución horizontal */
     .nav-link,
     .nav-dropdown-btn {
-        padding: 16px 22px;
-        font-size: 1.05rem;
+        padding: 9px 12px;
+        font-size: 0.8rem;
         white-space: nowrap;
     }
 
-    /* Dropdowns ocupan buena parte de la pantalla y son legibles */
+    /* Dropdowns ocupan buena parte de la pantalla */
     .dropdown-menu {
         min-width: 160px;
         max-width: 95vw;
@@ -515,18 +511,18 @@
     }
 
     .dropdown-link {
-        padding: 16px 18px;
-        font-size: 1rem;
+        padding: 14px 16px;
+        font-size: 0.95rem;
     }
 
     .dropdown-link:hover {
-        padding-left: 22px;
+        padding-left: 20px;
     }
 
     .header.scrolled .nav-link,
     .header.scrolled .nav-dropdown-btn {
-        padding: 12px 16px;
-        font-size: 1rem;
+        padding: 8px 12px;
+        font-size: 0.75rem;
     }
 
     .menu-container {
