@@ -376,6 +376,21 @@
     font-weight: 600;
 }
 
+/* Subsecciones dentro de secciones principales */
+.menu-subsection {
+    margin-bottom: 40px;
+}
+
+.menu-subsection h3 {
+    font-family: 'Playfair Display', serif;
+    color: #8B4513; /* Color café oscuro elegante */
+    font-size: 1.8rem;
+    border-bottom: 2px solid #D2B48C; /* Color café claro */
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
 /* Estilos responsivos */
 @media (max-width: 768px) {
     .header .header-inner {
