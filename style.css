@@ -491,6 +491,10 @@
     .menu-section h2 {
         font-size: 1.8rem;
     }
+    
+    .menu-item-img {
+        height: 250px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -552,6 +556,10 @@
 
     .menu-section h2 {
         font-size: 1.6rem;
+    }
+    
+    .menu-item-img {
+        height: 220px;
     }
 }
 
