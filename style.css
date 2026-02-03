@@ -310,6 +310,10 @@
     transition: transform 0.5s ease;
 }
 
+.img-horizontal {
+    transform: rotate(90deg);
+}
+
 .menu-item:hover .menu-item-img img {
     transform: scale(1.05);
 }
