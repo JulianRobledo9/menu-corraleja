@@ -2,6 +2,7 @@
 const header = document.getElementById('header');
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
+const searchSuggestions = document.getElementById('searchSuggestions');
 const menuItems = document.querySelectorAll('.menu-item');
 const backToTop = document.getElementById('backToTop');
 const currentYear = document.getElementById('current-year');
@@ -89,17 +90,98 @@ window.addEventListener('scroll', () => {
     highlightActiveSection();
 });
 
-// ===== BÚSQUEDA =====
-function searchMenu() {
+// ===== BÚSQUEDA CON AUTOCOMPLETE =====
+// Recopilar todos los platos disponibles
+function getAllMenuItems() {
+    const items = [];
+    menuItems.forEach(item => {
+        const name = item.querySelector('h3')?.textContent.trim() || '';
+        const description = item.querySelector('p')?.textContent.trim() || '';
+        const price = item.querySelector('.menu-item-price')?.textContent.trim() || '';
+        
+        if (name) {
+            items.push({
+                name: name,
+                description: description,
+                price: price,
+                element: item
+            });
+        }
+    });
+    return items;
+}
+
+const allMenuItems = getAllMenuItems();
+let currentSuggestionIndex = -1;
+
+// Generar sugerencias mientras el usuario escribe
+function generateSuggestions() {
     const searchTerm = searchInput.value.toLowerCase().trim();
+    const suggestionsContainer = searchSuggestions;
+    
+    // Limpiar sugerencias previas
+    suggestionsContainer.innerHTML = '';
+    currentSuggestionIndex = -1;
+    
+    if (searchTerm === '') {
+        suggestionsContainer.classList.remove('active');
+        return;
+    }
+    
+    // Filtrar platos que coincidan con el término
+    const matches = allMenuItems.filter(item => {
+        const name = item.name.toLowerCase();
+        const desc = item.description.toLowerCase();
+        return name.includes(searchTerm) || desc.includes(searchTerm);
+    });
+    
+    if (matches.length === 0) {
+        suggestionsContainer.innerHTML = '<li class="search-suggestion-item" style="cursor:not-allowed;"><span class="search-suggestion-text">No hay resultados</span></li>';
+        suggestionsContainer.classList.add('active');
+        return;
+    }
+    
+    // Mostrar máximo 8 sugerencias
+    matches.slice(0, 8).forEach((match, index) => {
+        const li = document.createElement('li');
+        li.className = 'search-suggestion-item';
+        li.dataset.index = index;
+        
+        // Resaltar el término buscado en la sugerencia
+        const highlightedName = match.name.replace(
+            new RegExp(`(${searchTerm})`, 'gi'),
+            '<strong>$1</strong>'
+        );
+        
+        li.innerHTML = `
+            <span class="search-suggestion-icon">🍽️</span>
+            <span class="search-suggestion-text">${highlightedName}</span>
+            <span style="color:var(--accent); font-weight:600; font-size:0.9rem;">${match.price}</span>
+        `;
+        
+        li.addEventListener('click', () => {
+            searchInput.value = match.name;
+            performSearch(match.name);
+            suggestionsContainer.classList.remove('active');
+            suggestionsContainer.innerHTML = '';
+        });
+        
+        suggestionsContainer.appendChild(li);
+    });
+    
+    suggestionsContainer.classList.add('active');
+}
+
+// Ejecutar búsqueda y mostrar resultados
+function performSearch(searchTerm = null) {
+    const term = (searchTerm || searchInput.value).toLowerCase().trim();
     
     menuItems.forEach(item => {
         const name = item.querySelector('h3')?.textContent.toLowerCase() || '';
         const description = item.querySelector('p')?.textContent.toLowerCase() || '';
-        const matches = name.includes(searchTerm) || description.includes(searchTerm);
+        const matches = name.includes(term) || description.includes(term);
         
-        // Mostrar u ocultar el item
-        if (searchTerm === '' || matches) {
+        if (term === '' || matches) {
             item.style.display = 'block';
         } else {
             item.style.display = 'none';
@@ -107,12 +189,53 @@ function searchMenu() {
     });
 }
 
+// Navegación por sugerencias con teclado
 if (searchInput) {
-    searchInput.addEventListener('input', searchMenu);
+    searchInput.addEventListener('input', generateSuggestions);
+    
+    searchInput.addEventListener('keydown', (e) => {
+        const items = suggestionsContainer.querySelectorAll('.search-suggestion-item');
+        
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            currentSuggestionIndex = Math.min(currentSuggestionIndex + 1, items.length - 1);
+            updateSuggestionSelection(items);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            currentSuggestionIndex = Math.max(currentSuggestionIndex - 1, -1);
+            updateSuggestionSelection(items);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (currentSuggestionIndex >= 0 && items[currentSuggestionIndex]) {
+                items[currentSuggestionIndex].click();
+            } else {
+                performSearch();
+                suggestionsContainer.classList.remove('active');
+            }
+        } else if (e.key === 'Escape') {
+            suggestionsContainer.classList.remove('active');
+        }
+    });
+    
+    // Cerrar sugerencias al hacer clic fuera
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-wrapper')) {
+            suggestionsContainer.classList.remove('active');
+        }
+    });
+}
+
+function updateSuggestionSelection(items) {
+    items.forEach((item, index) => {
+        item.classList.toggle('active', index === currentSuggestionIndex);
+    });
 }
 
 if (searchBtn) {
-    searchBtn.addEventListener('click', searchMenu);
+    searchBtn.addEventListener('click', () => {
+        performSearch();
+        searchSuggestions.classList.remove('active');
+    });
 }
 
 // ===== DROPDOWNS - Mejorado para que se vean completos =====

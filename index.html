@@ -18,12 +18,16 @@
                 </div>
             </div>
 
-            <!-- Barra de búsqueda -->
-            <div class="search-bar">
-                <input type="text" class="search-input" id="searchInput" placeholder="Buscar en el menú...">
-                <button class="search-btn" id="searchBtn">
-                    <i class="fas fa-search"></i>
-                </button>
+            <!-- Barra de búsqueda con autocomplete -->
+            <div class="search-wrapper">
+                <div class="search-bar">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar plato, bebida..." autocomplete="off">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <!-- Dropdown de sugerencias -->
+                <ul class="search-suggestions" id="searchSuggestions"></ul>
             </div>
 
             <!-- Navegación completa con todos los botones originales -->
