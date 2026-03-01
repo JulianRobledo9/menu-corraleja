@@ -64,6 +64,13 @@ body {
     /* darle fondo circular para contraste sobre cualquier gradiente */
     background: var(--secondary);
     border-radius: 50%;
+    /* tamaño fijo para que sea fácil de tocar y ver */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--primary-dark);
 }
 
 /* cuando el menú está abierto en móviles, empuja el contenido hacia abajo si es necesario */
