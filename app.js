@@ -91,7 +91,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== BÚSQUEDA CON AUTOCOMPLETE =====
-// Recopilar todos los platos disponibles (solo los completos)
+// Recopilar todos los platos disponibles (solo los que tengan nombre, imagen y precio)
 function getAllMenuItems() {
     const items = [];
     menuItems.forEach(item => {
@@ -101,8 +101,8 @@ function getAllMenuItems() {
         const imgElement = item.querySelector('.menu-item-img img');
         const imgSrc = imgElement?.src.trim() || '';
         
-        // Solo incluir items que tengan nombre, imagen, descripción y precio válidos
-        if (name && imgSrc && description && price) {
+        // Solo incluir items que tengan nombre, imagen Y precio (descripción es opcional)
+        if (name && imgSrc && price) {
             items.push({
                 name: name,
                 description: description,
@@ -213,14 +213,13 @@ function performSearch(searchTerm = null) {
         const name = item.querySelector('h3')?.textContent.toLowerCase() || '';
         const imgElement = item.querySelector('.menu-item-img img');
         const imgSrc = imgElement?.src.trim() || '';
-        const description = item.querySelector('p')?.textContent.toLowerCase() || '';
         const price = item.querySelector('.menu-item-price')?.textContent.trim() || '';
         
-        // Solo mostrar items completos que coincidan por nombre
-        const isComplete = imgSrc && description && price;
+        // Solo mostrar items que sean válidos (tengan nombre, imagen y precio) y que coincidan por nombre
+        const isValid = imgSrc && price;
         const matchesName = name.includes(term);
         
-        if (term === '' || (isComplete && matchesName)) {
+        if (term === '' || (isValid && matchesName)) {
             item.style.display = 'block';
         } else {
             item.style.display = 'none';
