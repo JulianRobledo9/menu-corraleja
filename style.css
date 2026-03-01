@@ -73,6 +73,19 @@ body {
     border: 2px solid var(--primary-dark);
 }
 
+/* utilitario de accesibilidad para texto oculto visualmente */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* cuando el menú está abierto en móviles, empuja el contenido hacia abajo si es necesario */
 .nav-menu.open {
     display: block !important;
