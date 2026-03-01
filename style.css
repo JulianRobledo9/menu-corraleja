@@ -94,7 +94,7 @@ body {
 /* ===== HEADER MEJORADO ===== */
 .header {
     /* background image (placed in repo as header-bg.jpg) */
-    background: url('header-bg.jpg') no-repeat center center;
+    background: url('fondoo.jpeg') no-repeat center center;
     background-size: cover;
     /* fallback gradient in case image fails */
     background-color: var(--primary-dark);
@@ -120,9 +120,13 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.4);
-    z-index: 1001; /* behind header content */
+        z-index: 0; /* behind header-inner content */
 }
 
+    .header-inner {
+        position: relative;
+        z-index: 1; /* ensure contents sit above overlay */
+    }
 /* Permitir que los dropdowns salgan del header fijo */
 .header, .header-inner {
     overflow: visible;
@@ -132,6 +136,8 @@ body {
     padding: 5px 0;
     background: rgba(139,69,19,0.98);
     backdrop-filter: blur(10px);
+        /* keep background image when scrolled; do not override */
+        /* background remains from .header, so avoid dark rgba here */
 }
 
 .header-inner {
