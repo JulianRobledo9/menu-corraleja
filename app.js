@@ -176,10 +176,27 @@ function generateSuggestions() {
         `;
         
         li.addEventListener('click', () => {
-            searchInput.value = match.name;
-            performSearch(match.name);
+            // Limpiar búsqueda y sugerencias
+            searchInput.value = '';
             suggestionsContainer.classList.remove('active');
             suggestionsContainer.innerHTML = '';
+            
+            // Mostrar todos los items (deshacer cualquier filtro previo)
+            menuItems.forEach(item => item.style.display = 'block');
+            
+            // Scroll suave al platillo seleccionado
+            const headerHeight = header.offsetHeight;
+            const itemPosition = match.element.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+                top: itemPosition - headerHeight - 30,
+                behavior: 'smooth'
+            });
+            
+            // Destacar el item brevemente
+            match.element.style.boxShadow = '0 0 20px var(--accent)';
+            setTimeout(() => {
+                match.element.style.boxShadow = '';
+            }, 2000);
         });
         
         suggestionsContainer.appendChild(li);
@@ -255,7 +272,15 @@ function updateSuggestionSelection(items) {
 
 if (searchBtn) {
     searchBtn.addEventListener('click', () => {
-        performSearch();
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (searchTerm === '') {
+            // Si está vacío, mostrar todos los items
+            menuItems.forEach(item => item.style.display = 'block');
+        } else {
+            performSearch();
+        }
+        
         searchSuggestions.classList.remove('active');
     });
 }
