@@ -91,15 +91,18 @@ window.addEventListener('scroll', () => {
 });
 
 // ===== BÚSQUEDA CON AUTOCOMPLETE =====
-// Recopilar todos los platos disponibles
+// Recopilar todos los platos disponibles (solo los completos)
 function getAllMenuItems() {
     const items = [];
     menuItems.forEach(item => {
         const name = item.querySelector('h3')?.textContent.trim() || '';
         const description = item.querySelector('p')?.textContent.trim() || '';
         const price = item.querySelector('.menu-item-price')?.textContent.trim() || '';
+        const imgElement = item.querySelector('.menu-item-img img');
+        const imgSrc = imgElement?.src.trim() || '';
         
-        if (name) {
+        // Solo incluir items que tengan nombre, imagen, descripción y precio válidos
+        if (name && imgSrc && description && price) {
             items.push({
                 name: name,
                 description: description,
@@ -114,7 +117,7 @@ function getAllMenuItems() {
 const allMenuItems = getAllMenuItems();
 let currentSuggestionIndex = -1;
 
-// Generar sugerencias mientras el usuario escribe
+// Generar sugerencias mientras el usuario escribe (búsqueda más precisa)
 function generateSuggestions() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const suggestionsContainer = searchSuggestions;
@@ -123,31 +126,44 @@ function generateSuggestions() {
     suggestionsContainer.innerHTML = '';
     currentSuggestionIndex = -1;
     
-    if (searchTerm === '') {
+    if (searchTerm === '' || searchTerm.length < 2) {
         suggestionsContainer.classList.remove('active');
         return;
     }
     
-    // Filtrar platos que coincidan con el término
+    // Filtrar platos que coincidan: priorizar coincidencias en el nombre
     const matches = allMenuItems.filter(item => {
         const name = item.name.toLowerCase();
-        const desc = item.description.toLowerCase();
-        return name.includes(searchTerm) || desc.includes(searchTerm);
+        // Buscar si el término coincide con el inicio de una palabra en el nombre
+        const nameWords = name.split(/\s+/);
+        const isNameMatch = nameWords.some(word => word.startsWith(searchTerm));
+        
+        // También incluir si está en mitad del nombre, pero con menor prioridad
+        const isPartialNameMatch = name.includes(searchTerm);
+        
+        return isNameMatch || isPartialNameMatch;
+    });
+    
+    // Ordenar: primero los que coinciden en el inicio del nombre
+    matches.sort((a, b) => {
+        const aStartsWith = a.name.toLowerCase().split(/\s+/)[0].startsWith(searchTerm);
+        const bStartsWith = b.name.toLowerCase().split(/\s+/)[0].startsWith(searchTerm);
+        return bStartsWith - aStartsWith; // true (1) antes que false (0)
     });
     
     if (matches.length === 0) {
-        suggestionsContainer.innerHTML = '<li class="search-suggestion-item" style="cursor:not-allowed;"><span class="search-suggestion-text">No hay resultados</span></li>';
+        suggestionsContainer.innerHTML = '<li class="search-suggestion-item" style="cursor:not-allowed;"><span class="search-suggestion-text">No hay resultados para "' + searchTerm + '"</span></li>';
         suggestionsContainer.classList.add('active');
         return;
     }
     
-    // Mostrar máximo 8 sugerencias
-    matches.slice(0, 8).forEach((match, index) => {
+    // Mostrar máximo 6 sugerencias
+    matches.slice(0, 6).forEach((match, index) => {
         const li = document.createElement('li');
         li.className = 'search-suggestion-item';
         li.dataset.index = index;
         
-        // Resaltar el término buscado en la sugerencia
+        // Resaltar el término buscado en la sugerencia (solo en el nombre)
         const highlightedName = match.name.replace(
             new RegExp(`(${searchTerm})`, 'gi'),
             '<strong>$1</strong>'
@@ -172,16 +188,22 @@ function generateSuggestions() {
     suggestionsContainer.classList.add('active');
 }
 
-// Ejecutar búsqueda y mostrar resultados
+// Ejecutar búsqueda y mostrar resultados (solo buscar en nombres completos)
 function performSearch(searchTerm = null) {
     const term = (searchTerm || searchInput.value).toLowerCase().trim();
     
     menuItems.forEach(item => {
         const name = item.querySelector('h3')?.textContent.toLowerCase() || '';
+        const imgElement = item.querySelector('.menu-item-img img');
+        const imgSrc = imgElement?.src.trim() || '';
         const description = item.querySelector('p')?.textContent.toLowerCase() || '';
-        const matches = name.includes(term) || description.includes(term);
+        const price = item.querySelector('.menu-item-price')?.textContent.trim() || '';
         
-        if (term === '' || matches) {
+        // Solo mostrar items completos que coincidan por nombre
+        const isComplete = imgSrc && description && price;
+        const matchesName = name.includes(term);
+        
+        if (term === '' || (isComplete && matchesName)) {
             item.style.display = 'block';
         } else {
             item.style.display = 'none';
