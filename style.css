@@ -93,8 +93,11 @@ body {
 
 /* ===== HEADER MEJORADO ===== */
 .header {
-    /* background will be overridden when a custom image is provided */
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+    /* background image (placed in repo as header-bg.jpg) */
+    background: url('header-bg.jpg') no-repeat center center;
+    background-size: cover;
+    /* fallback gradient in case image fails */
+    background-color: var(--primary-dark);
     color: white;
     position: fixed;
     top: 0;
@@ -105,8 +108,19 @@ body {
     transition: var(--transition);
 
     /* allow background image to cover entire header */
-    background-size: cover;
-    background-position: center;
+    background-position: center center;
+}
+
+/* overlay layer on header to improve text contrast */
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1001; /* behind header content */
 }
 
 /* Permitir que los dropdowns salgan del header fijo */
