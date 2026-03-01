@@ -93,6 +93,7 @@ body {
 
 /* ===== HEADER MEJORADO ===== */
 .header {
+    /* background will be overridden when a custom image is provided */
     background: linear-gradient(135deg, var(--primary-dark), var(--primary));
     color: white;
     position: fixed;
@@ -102,6 +103,10 @@ body {
     z-index: 1000;
     box-shadow: var(--shadow);
     transition: var(--transition);
+
+    /* allow background image to cover entire header */
+    background-size: cover;
+    background-position: center;
 }
 
 /* Permitir que los dropdowns salgan del header fijo */
@@ -118,7 +123,7 @@ body {
 .header-inner {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 15px 20px;
+    padding: 25px 20px; /* extra vertical space for larger navbar */
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -675,7 +680,7 @@ body {
     }
 
     .header-inner {
-        padding: 10px 15px;
+        padding: 20px 15px;
     }
 
     .logo h1 {
@@ -711,6 +716,9 @@ body {
         font-size: 0.8rem;
         white-space: normal;
         text-align: center;
+        /* slightly larger hit area on mobile */
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     /* mostrar hamburguesa y ocultar por defecto la navegación */
     .hamburger {
