@@ -43,6 +43,22 @@ body {
     background: var(--light);
     color: var(--dark);
     transition: var(--transition);
+
+    /* botón hamburguesa oculto por defecto */
+    .hamburger {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.8rem;
+        cursor: pointer;
+        display: none;
+        padding: 5px;
+    }
+
+    /* cuando el menú está abierto en móviles, empuja el contenido hacia abajo si es necesario */
+    .nav-menu.open {
+        display: block !important;
+    }
     padding-top: 240px;
     overflow-x: hidden;
     line-height: 1.6;
@@ -599,6 +615,31 @@ body {
         font-size: 0.8rem;
         white-space: normal;
         text-align: center;
+    }
+    /* mostrar hamburguesa y ocultar por defecto la navegación */
+    .hamburger {
+        display: block;
+    }
+    .nav-menu {
+        overflow-x: visible;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary);
+        padding: 10px 0;
+        z-index: 1100;
+    }
+
+    .nav-menu.open {
+        display: block;
+    }
+
+    .nav-menu .nav-list {
+        flex-direction: column;
+        gap: 5px;
+        align-items: center;
     }
 
     /* mobile: permitir que los botones se envuelvan en varias filas */
