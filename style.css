@@ -51,26 +51,26 @@ body {
 /* ===== BOTÓN HAMBURGUESA ===== */
 /* oculto por defecto, estilos globales fuera de body */
 .hamburger {
-    background: none;
+    background: transparent;
     border: none;
     color: white;
     font-size: 1.8rem;
     cursor: pointer;
     display: none;
     padding: 5px;
-    /* asegurar que siempre está encima de otros elementos */
     position: relative;
     z-index: 1102;
-    /* darle fondo circular para contraste sobre cualquier gradiente */
-    background: var(--secondary);
-    border-radius: 50%;
-    /* tamaño fijo para que sea fácil de tocar y ver */
-    width: 40px;
-    height: 40px;
+    /* remove circular white background */
+    width: auto;
+    height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid var(--primary-dark);
+}
+
+.hamburger:hover {
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
 }
 
 /* utilitario de accesibilidad para texto oculto visualmente */
@@ -253,6 +253,7 @@ body {
     list-style: none;
     padding: 5px 0;
     margin: 0;
+    display: none; /* hide when inactive to remove white bar */
     max-height: 0;
     overflow: hidden;
     box-shadow: none;
@@ -263,6 +264,7 @@ body {
 }
 
 .search-suggestions.active {
+    display: block;
     max-height: 400px;
     overflow-y: auto;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
