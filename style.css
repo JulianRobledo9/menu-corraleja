@@ -43,31 +43,32 @@ body {
     background: var(--light);
     color: var(--dark);
     transition: var(--transition);
-
-    /* botón hamburguesa oculto por defecto */
-    .hamburger {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.8rem;
-        cursor: pointer;
-        display: none;
-        padding: 5px;
-        /* asegurar que siempre está encima de otros elementos */
-        position: relative;
-        z-index: 1102;
-        /* darle fondo circular para contraste sobre cualquier gradiente */
-        background: var(--secondary);
-        border-radius: 50%;
-    }
-
-    /* cuando el menú está abierto en móviles, empuja el contenido hacia abajo si es necesario */
-    .nav-menu.open {
-        display: block !important;
-    }
     padding-top: 240px;
     overflow-x: hidden;
     line-height: 1.6;
+}
+
+/* ===== BOTÓN HAMBURGUESA ===== */
+/* oculto por defecto, estilos globales fuera de body */
+.hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: none;
+    padding: 5px;
+    /* asegurar que siempre está encima de otros elementos */
+    position: relative;
+    z-index: 1102;
+    /* darle fondo circular para contraste sobre cualquier gradiente */
+    background: var(--secondary);
+    border-radius: 50%;
+}
+
+/* cuando el menú está abierto en móviles, empuja el contenido hacia abajo si es necesario */
+.nav-menu.open {
+    display: block !important;
 }
 
 /* ===== HEADER MEJORADO ===== */
