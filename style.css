@@ -53,6 +53,9 @@ body {
         cursor: pointer;
         display: none;
         padding: 5px;
+        /* asegurar que siempre está encima de otros elementos */
+        position: relative;
+        z-index: 1102;
     }
 
     /* cuando el menú está abierto en móviles, empuja el contenido hacia abajo si es necesario */
@@ -619,6 +622,10 @@ body {
     /* mostrar hamburguesa y ocultar por defecto la navegación */
     .hamburger {
         display: block;
+        /* posición fija en esquina para visibilidad inmediata */
+        position: absolute;
+        top: 15px;
+        right: 20px;
     }
     .nav-menu {
         overflow-x: visible;
