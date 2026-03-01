@@ -56,6 +56,9 @@ body {
         /* asegurar que siempre está encima de otros elementos */
         position: relative;
         z-index: 1102;
+        /* darle fondo circular para contraste sobre cualquier gradiente */
+        background: var(--secondary);
+        border-radius: 50%;
     }
 
     /* cuando el menú está abierto en móviles, empuja el contenido hacia abajo si es necesario */
