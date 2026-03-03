@@ -969,6 +969,36 @@ body {
         height: 340px;
     }
 }
+
+/* ===== AJUSTES ESPECÍFICOS PARA IMÁGENES DE BEBIDAS ===== */
+#gaseosas-1.5 .menu-item-img,
+#gaseosas-3 .menu-item-img,
+#licores-medias .menu-item-img,
+#licores-botellos .menu-item-img {
+    /* Mostrar las bebidas con mayor protagonismo */
+    height: 380px;
+    margin-bottom: 18px; /* separa la imagen del contenido */
+}
+
+@media (max-width: 900px) {
+    #gaseosas-1.5 .menu-item-img,
+    #gaseosas-3 .menu-item-img,
+    #licores-medias .menu-item-img,
+    #licores-botellos .menu-item-img {
+        height: 300px;
+        margin-bottom: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    #gaseosas-1.5 .menu-item-img,
+    #gaseosas-3 .menu-item-img,
+    #licores-medias .menu-item-img,
+    #licores-botellos .menu-item-img {
+        height: 260px;
+        margin-bottom: 12px;
+    }
+}
     margin-bottom: 15px;
     line-height: 1.5;
 }
