@@ -134,10 +134,7 @@ body {
 
 .header.scrolled {
     padding: 5px 0;
-    background: rgba(139,69,19,0.98);
     backdrop-filter: blur(10px);
-        /* keep background image when scrolled; do not override */
-        /* background remains from .header, so avoid dark rgba here */
 }
 
 .header-inner {
@@ -236,11 +233,6 @@ body {
     border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(5px);
 }
-
-        padding: 5px 0;
-        background-color: rgba(139,69,19,0.3); /* translucent dark layer to soften image */
-        backdrop-filter: blur(10px);
-    background: transparent;
     border: none;
     padding: 12px 20px;
     color: white;
