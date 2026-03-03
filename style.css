@@ -235,11 +235,13 @@ body {
     border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(5px);
 }
+.search-input {
+    flex: 1;
     border: none;
-    padding: 12px 20px;
+    background: transparent;
     color: white;
+    padding: 10px 15px;
     font-size: 1rem;
-    outline: none;
 }
 
 .search-input::placeholder {
