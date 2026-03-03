@@ -18,10 +18,10 @@ const tiktokLink = document.getElementById('tiktokLink');
 // ===== CONFIGURACION DE ENLACES DE REDES SOCIALES =====
 // Actualiza estos enlaces con tus URLs de redes sociales
 const socialLinks = {
-    whatsapp: 'https://wa.me/', // Ej: https://wa.me/573001234567
-    facebook: 'https://facebook.com/', // Ej: https://facebook.com/tu-pagina
-    instagram: 'https://instagram.com/', // Ej: https://instagram.com/tu-usuario
-    tiktok: 'https://tiktok.com/' // Ej: https://tiktok.com/@tu-usuario
+    whatsapp: 'https://wa.me/573204963882?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios',
+    facebook: 'https://www.facebook.com/share/1BtHn71958/?mibextid=wwXIfr',
+    instagram: 'https://www.instagram.com/lacorraleja.granada?igsh=NmVxejllNnZiN2Vo',
+    tiktok: 'https://tiktok.com/@lacorraleja.granada?_t=ZS-8wLhqGJxH7v&_r=1'
 };
 
 // ===== INICIALIZACIÓN =====
