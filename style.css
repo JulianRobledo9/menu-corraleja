@@ -850,9 +850,8 @@ body {
 
 .menu-items {
     display: grid;
-    /* aumentar el mínimo de las columnas para tarjetas más anchas */
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 28px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
 }
 
 /* ===== TARJETAS DE MENÚ ===== */
@@ -888,9 +887,31 @@ body {
 .menu-item:nth-child(6) { animation-delay: 0.6s; }
 
 .menu-item-img {
-    height: 300px; /* mayor altura para mostrar mejor las imágenes */
+    height: 220px;
     overflow: hidden;
     position: relative;
+}
+
+/* ===== ESPACIO EXTRA PARA IMÁGENES EN BEBIDAS ===== */
+#bebidas .menu-item-img {
+    /* imágenes un poco más altas para que el contenido se vea "alejado" */
+    height: 240px;
+    /* mayor margen para separarlas más del contenido */
+    margin: 8px;
+}
+
+@media (max-width: 768px) {
+    #bebidas .menu-item-img {
+        height: 220px;
+        margin: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    #bebidas .menu-item-img {
+        height: 200px;
+        margin: 4px;
+    }
 }
 
 .menu-item-img::after {
@@ -916,111 +937,19 @@ body {
 }
 
 .menu-item-content {
-    padding: 24px;
+    padding: 20px;
 }
 
 .menu-item h3 {
     font-family: 'Playfair Display', serif;
     color: var(--primary);
-    font-size: 1.45rem;
-    margin-bottom: 12px;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
 }
 
 .menu-item p {
     color: var(--gray);
     font-size: 0.95rem;
-
-/* ===== AJUSTES RESPONSIVOS PARA TARJETAS + IMÁGENES ===== */
-@media (max-width: 900px) {
-    .menu-items {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 22px;
-    }
-    .menu-item-img {
-        height: 280px;
-    }
-    .menu-item-content {
-        padding: 20px;
-    }
-    .social-icons-premium {
-        left: 8px; /* dar más espacio en pantalla pequeña */
-    }
-}
-
-@media (max-width: 480px) {
-    .menu-items {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-    .menu-item-img {
-        height: 260px;
-    }
-    .menu-item h3 {
-        font-size: 1.3rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .menu-items {
-        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-        gap: 32px;
-    }
-    .menu-item-img {
-        height: 340px;
-    }
-}
-
-/* ===== AJUSTES ESPECÍFICOS PARA TARJETAS E IMÁGENES DE BEBIDAS ===== */
- /* colocar la imagen en su contenedor sin recorte y permitir que el
-    propio img determine la altura, así se ve completa la botella */
- #gaseosas-1.5 .menu-item-img,
- #gaseosas-3 .menu-item-img,
- #licores-medias .menu-item-img,
- #licores-botellos .menu-item-img {
-     padding: 12px;
-     box-sizing: border-box;
-     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
-     /* altura automática para no forzar recorte */
-     height: auto !important;
-    margin-bottom: 18px; /* separa la imagen del contenido */
-}
-
-@media (max-width: 900px) {
-     /* seguir permitiendo altura automática en móvil grande */
-     #gaseosas-1.5 .menu-item-img,
-     #gaseosas-3 .menu-item-img,
-     #licores-medias .menu-item-img,
-     #licores-botellos .menu-item-img {
-         height: auto !important;
-    }
-}
-
-@media (max-width: 480px) {
-    #gaseosas-1.5 .menu-item-img,
-    #gaseosas-3 .menu-item-img,
-    #licores-medias .menu-item-img,
-    #licores-botellos .menu-item-img {
-         height: auto !important;
-#gaseosas-1.5 .menu-item-img,
-#gaseosas-3 .menu-item-img,
-#licores-medias .menu-item-img,
-#licores-botellos .menu-item-img {
-    padding: 12px;
-    box-sizing: border-box;
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
-}
-
-#gaseosas-1.5 .menu-item-img img,
-#gaseosas-3 .menu-item-img img,
-#licores-medias .menu-item-img img,
-#licores-botellos .menu-item-img img {
-    object-fit: contain !important;
-    object-position: center !important;
-    width: 100% !important;
-     height: auto !important; /* let image determine height */
-#licores-botellos .menu-item:hover .menu-item-img img {
-    transform: scale(1.03);
-}
     margin-bottom: 15px;
     line-height: 1.5;
 }
@@ -1222,6 +1151,11 @@ body {
     .menu-item-img {
         height: 200px;
     }
+    /* mantener altura mayor para bebidas aunque cambie globalmente */
+    #bebidas .menu-item-img {
+        height: 220px;
+        margin: 10px;
+    }
 
     .back-to-top {
         width: 45px;
@@ -1303,6 +1237,10 @@ body {
     .menu-item-img {
         height: 180px;
     }
+    #bebidas .menu-item-img {
+        height: 200px;
+        margin: 6px;
+    }
 
     .menu-item h3 {
         font-size: 1.1rem;
@@ -1310,29 +1248,6 @@ body {
 
     .menu-item-price {
         font-size: 1.1rem;
-    }
-}
-
-/* ===== PRIORIDAD MÓVIL: FORZAR IMÁGENES DE BEBIDAS MÁS GRANDES ===== */
-@media (max-width: 480px) {
-    #gaseosas-1.5 .menu-item-img,
-    #gaseosas-3 .menu-item-img,
-    #licores-medias .menu-item-img,
-    #licores-botellos .menu-item-img {
-        height: 320px !important; /* fuerza mayor altura en móviles */
-        margin-bottom: 14px !important;
-    }
-
-    #gaseosas-1.5 .menu-item-img img,
-    #gaseosas-3 .menu-item-img img,
-    #licores-medias .menu-item-img img,
-    #licores-botellos .menu-item-img img {
-        object-position: center top; /* enfocar la parte superior de las botellas */
-    }
-
-    /* Evitar que los iconos flotantes cubran las tarjetas en pantallas pequeñas */
-    .social-icons-premium {
-        display: none !important;
     }
 }
 
