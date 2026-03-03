@@ -447,20 +447,8 @@ window.addEventListener('hashchange', () => {
     }
 });
 
-// Si la página carga con un hash, hacer scroll
-if (location.hash) {
-    setTimeout(() => {
-        const target = document.querySelector(location.hash);
-        if (target) {
-            const headerHeight = header.offsetHeight;
-            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerHeight - 20;
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        }
-    }, 100);
-}
+// Deshabilitado: no hacer scroll automático al cargar la página
+// Ahora la página siempre comienza desde arriba
 
 // ===== AÑADIR ESTILOS PARA LINKS ACTIVOS =====
 const style = document.createElement('style');
