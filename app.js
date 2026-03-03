@@ -9,8 +9,29 @@ const currentYear = document.getElementById('current-year');
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.querySelector('.nav-menu');
 
+// Elementos de redes sociales
+const whatsappLink = document.getElementById('whatsappLink');
+const facebookLink = document.getElementById('facebookLink');
+const instagramLink = document.getElementById('instagramLink');
+const tiktokLink = document.getElementById('tiktokLink');
+
+// ===== CONFIGURACION DE ENLACES DE REDES SOCIALES =====
+// Actualiza estos enlaces con tus URLs de redes sociales
+const socialLinks = {
+    whatsapp: 'https://wa.me/', // Ej: https://wa.me/573001234567
+    facebook: 'https://facebook.com/', // Ej: https://facebook.com/tu-pagina
+    instagram: 'https://instagram.com/', // Ej: https://instagram.com/tu-usuario
+    tiktok: 'https://tiktok.com/' // Ej: https://tiktok.com/@tu-usuario
+};
+
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
+    // Asignar enlaces a redes sociales
+    if (whatsappLink) whatsappLink.href = socialLinks.whatsapp;
+    if (facebookLink) facebookLink.href = socialLinks.facebook;
+    if (instagramLink) instagramLink.href = socialLinks.instagram;
+    if (tiktokLink) tiktokLink.href = socialLinks.tiktok;
+    
     // Año actual en footer
     if (currentYear) {
         currentYear.textContent = new Date().getFullYear();
@@ -458,6 +479,125 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+// ===== EFECTOS ESPECIALES PARA ICONOS SOCIALES =====
+document.addEventListener('DOMContentLoaded', function() {
+    const socialIcons = document.querySelectorAll('.social-icon-premium');
+    
+    socialIcons.forEach(icon => {
+        // Efecto de partículas al hacer hover
+        icon.addEventListener('mouseenter', function(e) {
+            createParticles(e, this);
+        });
+        
+        // Efecto de onda al hacer click
+        icon.addEventListener('click', function(e) {
+            createRipple(e, this);
+        });
+        
+        // Efecto de brillo al mover el mouse
+        icon.addEventListener('mousemove', function(e) {
+            createGlowEffect(e, this);
+        });
+    });
+    
+    // Función para crear partículas
+    function createParticles(event, element) {
+        for (let i = 0; i < 8; i++) {
+            const particle = document.createElement('span');
+            particle.className = 'social-particle';
+            
+            const rect = element.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const angle = (i / 8) * Math.PI * 2;
+            const distance = 30;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+            
+            particle.style.setProperty('--tx', tx + 'px');
+            particle.style.setProperty('--ty', ty + 'px');
+            particle.style.left = centerX + 'px';
+            particle.style.top = centerY + 'px';
+            
+            // Color según la red social
+            if (element.classList.contains('whatsapp')) {
+                particle.style.background = '#25D366';
+            } else if (element.classList.contains('facebook')) {
+                particle.style.background = '#1877F2';
+            } else if (element.classList.contains('instagram')) {
+                particle.style.background = '#ee2a7b';
+            } else if (element.classList.contains('tiktok')) {
+                particle.style.background = '#25F4EE';
+            }
+            
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 1000);
+        }
+    }
+    
+    // Función para crear efecto de onda
+    function createRipple(event, element) {
+        const ripple = document.createElement('span');
+        ripple.className = 'ripple-effect';
+        
+        const rect = element.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (event.clientX - rect.left - size/2) + 'px';
+        ripple.style.top = (event.clientY - rect.top - size/2) + 'px';
+        
+        element.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    }
+    
+    // Función para efecto de brillo al mover mouse
+    function createGlowEffect(event, element) {
+        const rect = element.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        
+        element.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)`;
+        
+        setTimeout(() => {
+            element.style.background = '';
+        }, 100);
+    }
+    
+    // Animación suave de entrada
+    socialIcons.forEach((icon, index) => {
+        icon.style.opacity = '0';
+        icon.style.transform = 'translateX(-20px)';
+        
+        setTimeout(() => {
+            icon.style.transition = 'all 0.5s ease';
+            icon.style.opacity = '1';
+            icon.style.transform = 'translateX(0)';
+        }, 100 + (index * 100));
+    });
+});
+
+// ===== EFECTO DE PARTÍCULAS CONTINUAS (opcional) =====
+setInterval(() => {
+    const icons = document.querySelectorAll('.social-icon-premium');
+    icons.forEach(icon => {
+        if (icon.matches(':hover')) {
+            const event = new MouseEvent('mouseenter', {
+                view: window,
+                bubbles: true,
+                cancelable: true
+            });
+            icon.dispatchEvent(event);
+        }
+    });
+}, 2000);
 
 
 

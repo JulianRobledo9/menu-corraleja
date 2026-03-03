@@ -467,6 +467,334 @@ body {
     transform: translateY(-5px);
 }
 
+/* ===== VARIABLES PARA ICONOS SOCIALES PREMIUM ===== */
+:root {
+    --whatsapp-color: #25D366;
+    --whatsapp-gradient: linear-gradient(145deg, #25D366, #128C7E, #075E54);
+    --facebook-color: #1877F2;
+    --facebook-gradient: linear-gradient(145deg, #1877F2, #0A66C2, #0545A0);
+    --instagram-gradient: radial-gradient(circle at 30% 30%, #f9ce34, #ee2a7b, #6228d7);
+    --instagram-colors: #f9ce34, #ee2a7b, #6228d7;
+    --tiktok-gradient: linear-gradient(145deg, #000000, #25F4EE, #FE2C55);
+    --tiktok-colors: #000000, #25F4EE, #FE2C55;
+    --social-size: 55px;
+    --social-glow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.social-icons-premium {
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    z-index: 1000;
+}
+
+/* ===== ESTILO BASE PARA TODOS LOS ICONOS ===== */
+.social-icon-premium {
+    width: var(--social-size);
+    height: var(--social-size);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    overflow: visible;
+}
+
+/* ===== EFECTO 3D PARA EL ICONO ===== */
+.social-icon-premium::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(8px);
+    opacity: 0.5;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.social-icon-premium::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* ===== ICONO FONT AWESOME ===== */
+.social-icon-premium i {
+    font-size: 1.8rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+    transition: all 0.3s ease;
+}
+
+/* ===== WHATSAPP - EFECTO ESPECIAL ===== */
+.social-icon-premium.whatsapp {
+    background: var(--whatsapp-gradient);
+    background-size: 200% 200%;
+    animation: whatsappFloat 4s ease-in-out infinite;
+}
+
+.social-icon-premium.whatsapp::before {
+    background: var(--whatsapp-gradient);
+    animation: whatsappGlow 3s ease-in-out infinite;
+}
+
+@keyframes whatsappFloat {
+    0%, 100% { transform: translateY(0px) scale(1); }
+    25% { transform: translateY(-8px) scale(1.05); }
+    50% { transform: translateY(0px) scale(1.02); }
+    75% { transform: translateY(-4px) scale(1.03); }
+}
+
+@keyframes whatsappGlow {
+    0%, 100% { opacity: 0.5; filter: blur(8px); }
+    50% { opacity: 0.8; filter: blur(12px); }
+}
+
+.social-icon-premium.whatsapp:hover {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 0 30px #25D366;
+}
+
+.social-icon-premium.whatsapp:hover i {
+    animation: whatsappShake 0.5s ease-in-out;
+}
+
+@keyframes whatsappShake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    75% { transform: rotate(15deg); }
+}
+
+/* ===== FACEBOOK - EFECTO 3D ===== */
+.social-icon-premium.facebook {
+    background: var(--facebook-gradient);
+    background-size: 200% 200%;
+    animation: facebookPulse 4s ease-in-out infinite;
+}
+
+.social-icon-premium.facebook::before {
+    background: var(--facebook-gradient);
+    animation: facebookGlow 3s ease-in-out infinite;
+}
+
+@keyframes facebookPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); box-shadow: 0 0 20px #1877F2; }
+}
+
+@keyframes facebookGlow {
+    0%, 100% { opacity: 0.4; filter: blur(8px); }
+    50% { opacity: 0.7; filter: blur(15px); }
+}
+
+.social-icon-premium.facebook:hover {
+    transform: scale(1.2) rotateY(180deg);
+    box-shadow: 0 0 30px #1877F2;
+}
+
+.social-icon-premium.facebook:hover i {
+    transform: rotateY(180deg);
+}
+
+/* ===== INSTAGRAM - EFECTO DEGRADADO GIRATORIO ===== */
+.social-icon-premium.instagram {
+    background: radial-gradient(circle at 30% 30%, #f9ce34, #ee2a7b, #6228d7);
+    background-size: 200% 200%;
+    animation: instagramRotate 8s linear infinite;
+}
+
+.social-icon-premium.instagram::before {
+    background: radial-gradient(circle at 30% 30%, #f9ce34, #ee2a7b, #6228d7);
+    animation: instagramGlow 3s ease-in-out infinite;
+}
+
+@keyframes instagramRotate {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.social-icon-premium.instagram:hover {
+    transform: scale(1.2) rotate(360deg);
+    box-shadow: 0 0 30px #ee2a7b;
+    animation: none;
+}
+
+.social-icon-premium.instagram:hover i {
+    animation: instagramSpin 0.6s ease-out;
+}
+
+@keyframes instagramSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(360deg) scale(1.2); }
+}
+
+/* ===== TIKTOK - EFECTO DE BRILLO MÓVIL ===== */
+.social-icon-premium.tiktok {
+    background: linear-gradient(145deg, #000000, #25F4EE, #FE2C55);
+    background-size: 300% 300%;
+    animation: tiktokMove 5s ease infinite;
+}
+
+.social-icon-premium.tiktok::before {
+    background: linear-gradient(145deg, #000000, #25F4EE, #FE2C55);
+    animation: tiktokGlow 3s ease-in-out infinite;
+}
+
+@keyframes tiktokMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.social-icon-premium.tiktok:hover {
+    transform: scale(1.2) skew(-5deg);
+    box-shadow: 0 0 30px #25F4EE;
+}
+
+.social-icon-premium.tiktok:hover i {
+    animation: tiktokBounce 0.5s ease;
+}
+
+@keyframes tiktokBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+}
+
+/* ===== EFECTOS DE PARTÍCULAS (con JavaScript) ===== */
+.social-icon-premium {
+    overflow: visible;
+}
+
+.social-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: white;
+    pointer-events: none;
+    z-index: 1001;
+    animation: particleFly 1s ease-out forwards;
+}
+
+@keyframes particleFly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* ===== TOOLTIP PREMIUM ===== */
+.social-tooltip {
+    position: absolute;
+    left: 70px;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1002;
+}
+
+.social-icon-premium:hover .social-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===== EFECTO DE ONDA AL HACER CLICK ===== */
+.ripple-effect {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0) 70%);
+    transform: scale(0);
+    animation: ripple 0.6s ease-out;
+    pointer-events: none;
+    z-index: 1003;
+}
+
+@keyframes ripple {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ===== MODO OSCURO ===== */
+.dark-mode .social-icon-premium {
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .social-icons-premium {
+        left: 10px;
+        gap: 12px;
+    }
+    
+    .social-icon-premium {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .social-icon-premium i {
+        font-size: 1.5rem;
+    }
+    
+    .social-tooltip {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icons-premium {
+        left: 8px;
+        gap: 10px;
+    }
+    
+    .social-icon-premium {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .social-icon-premium i {
+        font-size: 1.3rem;
+    }
+}
 /* ===== CONTENIDO PRINCIPAL ===== */
 .menu-container {
     max-width: 1200px;
