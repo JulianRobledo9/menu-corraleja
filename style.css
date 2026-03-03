@@ -970,23 +970,28 @@ body {
     }
 }
 
-/* ===== AJUSTES ESPECÍFICOS PARA IMÁGENES DE BEBIDAS ===== */
-#gaseosas-1.5 .menu-item-img,
-#gaseosas-3 .menu-item-img,
-#licores-medias .menu-item-img,
-#licores-botellos .menu-item-img {
-    /* Mostrar las bebidas con mayor protagonismo */
-    height: 380px;
+/* ===== AJUSTES ESPECÍFICOS PARA TARJETAS E IMÁGENES DE BEBIDAS ===== */
+ /* colocar la imagen en su contenedor sin recorte y permitir que el
+    propio img determine la altura, así se ve completa la botella */
+ #gaseosas-1.5 .menu-item-img,
+ #gaseosas-3 .menu-item-img,
+ #licores-medias .menu-item-img,
+ #licores-botellos .menu-item-img {
+     padding: 12px;
+     box-sizing: border-box;
+     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
+     /* altura automática para no forzar recorte */
+     height: auto !important;
     margin-bottom: 18px; /* separa la imagen del contenido */
 }
 
 @media (max-width: 900px) {
-    #gaseosas-1.5 .menu-item-img,
-    #gaseosas-3 .menu-item-img,
-    #licores-medias .menu-item-img,
-    #licores-botellos .menu-item-img {
-        height: 300px;
-        margin-bottom: 14px;
+     /* seguir permitiendo altura automática en móvil grande */
+     #gaseosas-1.5 .menu-item-img,
+     #gaseosas-3 .menu-item-img,
+     #licores-medias .menu-item-img,
+     #licores-botellos .menu-item-img {
+         height: auto !important;
     }
 }
 
@@ -995,12 +1000,7 @@ body {
     #gaseosas-3 .menu-item-img,
     #licores-medias .menu-item-img,
     #licores-botellos .menu-item-img {
-        height: 260px;
-        margin-bottom: 12px;
-    }
-}
-
-/* Evitar recorte de las botellas: usar contain y padding en el contenedor */
+         height: auto !important;
 #gaseosas-1.5 .menu-item-img,
 #gaseosas-3 .menu-item-img,
 #licores-medias .menu-item-img,
@@ -1017,14 +1017,7 @@ body {
     object-fit: contain !important;
     object-position: center !important;
     width: 100% !important;
-    height: 100% !important;
-    transition: transform 0.4s ease, opacity 0.3s ease;
-}
-
-/* Pequeño ajuste: no escalar tanto al hover para mantener la vista completa */
-#gaseosas-1.5 .menu-item:hover .menu-item-img img,
-#gaseosas-3 .menu-item:hover .menu-item-img img,
-#licores-medias .menu-item:hover .menu-item-img img,
+     height: auto !important; /* let image determine height */
 #licores-botellos .menu-item:hover .menu-item-img img {
     transform: scale(1.03);
 }
