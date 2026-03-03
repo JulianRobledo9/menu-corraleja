@@ -1291,6 +1291,29 @@ body {
     }
 }
 
+/* ===== PRIORIDAD MÓVIL: FORZAR IMÁGENES DE BEBIDAS MÁS GRANDES ===== */
+@media (max-width: 480px) {
+    #gaseosas-1.5 .menu-item-img,
+    #gaseosas-3 .menu-item-img,
+    #licores-medias .menu-item-img,
+    #licores-botellos .menu-item-img {
+        height: 320px !important; /* fuerza mayor altura en móviles */
+        margin-bottom: 14px !important;
+    }
+
+    #gaseosas-1.5 .menu-item-img img,
+    #gaseosas-3 .menu-item-img img,
+    #licores-medias .menu-item-img img,
+    #licores-botellos .menu-item-img img {
+        object-position: center top; /* enfocar la parte superior de las botellas */
+    }
+
+    /* Evitar que los iconos flotantes cubran las tarjetas en pantallas pequeñas */
+    .social-icons-premium {
+        display: none !important;
+    }
+}
+
 /* ===== ESTILOS PARA LINKS ACTIVOS ===== */
 .nav-link.active, .dropdown-link.active {
     background: var(--secondary) !important;
