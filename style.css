@@ -999,6 +999,35 @@ body {
         margin-bottom: 12px;
     }
 }
+
+/* Evitar recorte de las botellas: usar contain y padding en el contenedor */
+#gaseosas-1.5 .menu-item-img,
+#gaseosas-3 .menu-item-img,
+#licores-medias .menu-item-img,
+#licores-botellos .menu-item-img {
+    padding: 12px;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
+}
+
+#gaseosas-1.5 .menu-item-img img,
+#gaseosas-3 .menu-item-img img,
+#licores-medias .menu-item-img img,
+#licores-botellos .menu-item-img img {
+    object-fit: contain !important;
+    object-position: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* Pequeño ajuste: no escalar tanto al hover para mantener la vista completa */
+#gaseosas-1.5 .menu-item:hover .menu-item-img img,
+#gaseosas-3 .menu-item:hover .menu-item-img img,
+#licores-medias .menu-item:hover .menu-item-img img,
+#licores-botellos .menu-item:hover .menu-item-img img {
+    transform: scale(1.03);
+}
     margin-bottom: 15px;
     line-height: 1.5;
 }
