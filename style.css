@@ -850,8 +850,9 @@ body {
 
 .menu-items {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    /* aumentar el mínimo de las columnas para tarjetas más anchas */
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 28px;
 }
 
 /* ===== TARJETAS DE MENÚ ===== */
@@ -887,7 +888,7 @@ body {
 .menu-item:nth-child(6) { animation-delay: 0.6s; }
 
 .menu-item-img {
-    height: 220px;
+    height: 300px; /* mayor altura para mostrar mejor las imágenes */
     overflow: hidden;
     position: relative;
 }
@@ -915,19 +916,59 @@ body {
 }
 
 .menu-item-content {
-    padding: 20px;
+    padding: 24px;
 }
 
 .menu-item h3 {
     font-family: 'Playfair Display', serif;
     color: var(--primary);
-    font-size: 1.3rem;
-    margin-bottom: 10px;
+    font-size: 1.45rem;
+    margin-bottom: 12px;
 }
 
 .menu-item p {
     color: var(--gray);
     font-size: 0.95rem;
+
+/* ===== AJUSTES RESPONSIVOS PARA TARJETAS + IMÁGENES ===== */
+@media (max-width: 900px) {
+    .menu-items {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 22px;
+    }
+    .menu-item-img {
+        height: 280px;
+    }
+    .menu-item-content {
+        padding: 20px;
+    }
+    .social-icons-premium {
+        left: 8px; /* dar más espacio en pantalla pequeña */
+    }
+}
+
+@media (max-width: 480px) {
+    .menu-items {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .menu-item-img {
+        height: 260px;
+    }
+    .menu-item h3 {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .menu-items {
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 32px;
+    }
+    .menu-item-img {
+        height: 340px;
+    }
+}
     margin-bottom: 15px;
     line-height: 1.5;
 }
