@@ -120,20 +120,22 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0,0,0,0.4);
-        z-index: 0; /* behind header-inner content */
+    z-index: 0; /* behind header-inner content */
 }
 
-    .header-inner {
-        position: relative;
-        z-index: 1; /* ensure contents sit above overlay */
-    }
 /* Permitir que los dropdowns salgan del header fijo */
 .header, .header-inner {
     overflow: visible;
 }
 
+.header-inner {
+    position: relative;
+    z-index: 1; /* ensure contents sit above overlay */
+}
+
 .header.scrolled {
     padding: 5px 0;
+    background-color: transparent;
     backdrop-filter: blur(10px);
 }
 
