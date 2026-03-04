@@ -16,6 +16,11 @@ const facebookLink = document.getElementById('facebookLink');
 const instagramLink = document.getElementById('instagramLink');
 const tiktokLink = document.getElementById('tiktokLink');
 
+// Elementos de redes sociales en footer
+const footerWhatsappLink = document.getElementById('footerWhatsappLink');
+const footerFacebookLink = document.getElementById('footerFacebookLink');
+const footerInstagramLink = document.getElementById('footerInstagramLink');
+
 // ===== CONFIGURACION DE ENLACES DE REDES SOCIALES =====
 // Actualiza estos enlaces con tus URLs de redes sociales
 const socialLinks = {
@@ -27,11 +32,16 @@ const socialLinks = {
 
 // ===== INICIALIZACIÓN =====
 document.addEventListener('DOMContentLoaded', () => {
-    // Asignar enlaces a redes sociales
+    // Asignar enlaces a redes sociales en HEADER
     if (whatsappLink) whatsappLink.href = socialLinks.whatsapp;
     if (facebookLink) facebookLink.href = socialLinks.facebook;
     if (instagramLink) instagramLink.href = socialLinks.instagram;
     if (tiktokLink) tiktokLink.href = socialLinks.tiktok;
+    
+    // Asignar enlaces a redes sociales en FOOTER
+    if (footerWhatsappLink) footerWhatsappLink.href = socialLinks.whatsapp;
+    if (footerFacebookLink) footerFacebookLink.href = socialLinks.facebook;
+    if (footerInstagramLink) footerInstagramLink.href = socialLinks.instagram;
     
     // Año actual en footer
     if (currentYear) {
