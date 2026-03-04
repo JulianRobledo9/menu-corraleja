@@ -37,12 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (facebookLink) facebookLink.href = socialLinks.facebook;
     if (instagramLink) instagramLink.href = socialLinks.instagram;
     if (tiktokLink) tiktokLink.href = socialLinks.tiktok;
-    
+
     // Asignar enlaces a redes sociales en FOOTER
     if (footerWhatsappLink) footerWhatsappLink.href = socialLinks.whatsapp;
     if (footerFacebookLink) footerFacebookLink.href = socialLinks.facebook;
     if (footerInstagramLink) footerInstagramLink.href = socialLinks.instagram;
-    
+
     // Año actual en footer
     if (currentYear) {
         currentYear.textContent = new Date().getFullYear();
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Scroll suave para todos los enlaces del menú
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
@@ -60,12 +60,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     top: targetPosition,
                     behavior: 'smooth'
                 });
-                
+
                 // Cerrar todos los dropdowns después de hacer clic
                 document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
                     menu.classList.remove('active');
                 });
-                
+
                 // Rotar iconos de vuelta
                 document.querySelectorAll('.nav-dropdown-btn i').forEach(icon => {
                     icon.style.transform = 'rotate(0deg)';
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             section.style.scrollMarginTop = (headerHeight + 20) + 'px';
         });
     }
-    
+
     updateScrollMargin();
     window.addEventListener('resize', updateScrollMargin);
 });
@@ -98,10 +98,10 @@ if (themeToggle) {
     // Cambiar tema al hacer clic
     themeToggle.addEventListener('click', () => {
         document.documentElement.classList.toggle('dark-mode');
-        
+
         const isDarkMode = document.documentElement.classList.contains('dark-mode');
         themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        
+
         // Guardar preferencia
         localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     });
@@ -138,7 +138,7 @@ window.addEventListener('scroll', () => {
         header.classList.remove('scrolled');
         backToTop.classList.remove('show');
     }
-    
+
     // Resaltar sección activa
     highlightActiveSection();
 });
@@ -153,7 +153,7 @@ function getAllMenuItems() {
         const price = item.querySelector('.menu-item-price')?.textContent.trim() || '';
         const imgElement = item.querySelector('.menu-item-img img');
         const imgSrc = imgElement?.src.trim() || '';
-        
+
         // Solo incluir items que tengan nombre, imagen Y precio (descripción es opcional)
         if (name && imgSrc && price) {
             items.push({
@@ -174,69 +174,69 @@ let currentSuggestionIndex = -1;
 function generateSuggestions() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const suggestionsContainer = searchSuggestions;
-    
+
     // Limpiar sugerencias previas
     suggestionsContainer.innerHTML = '';
     currentSuggestionIndex = -1;
-    
+
     if (searchTerm === '' || searchTerm.length < 2) {
         suggestionsContainer.classList.remove('active');
         return;
     }
-    
+
     // Filtrar platos que coincidan: priorizar coincidencias en el nombre
     const matches = allMenuItems.filter(item => {
         const name = item.name.toLowerCase();
         // Buscar si el término coincide con el inicio de una palabra en el nombre
         const nameWords = name.split(/\s+/);
         const isNameMatch = nameWords.some(word => word.startsWith(searchTerm));
-        
+
         // También incluir si está en mitad del nombre, pero con menor prioridad
         const isPartialNameMatch = name.includes(searchTerm);
-        
+
         return isNameMatch || isPartialNameMatch;
     });
-    
+
     // Ordenar: primero los que coinciden en el inicio del nombre
     matches.sort((a, b) => {
         const aStartsWith = a.name.toLowerCase().split(/\s+/)[0].startsWith(searchTerm);
         const bStartsWith = b.name.toLowerCase().split(/\s+/)[0].startsWith(searchTerm);
         return bStartsWith - aStartsWith; // true (1) antes que false (0)
     });
-    
+
     if (matches.length === 0) {
         suggestionsContainer.innerHTML = '<li class="search-suggestion-item" style="cursor:not-allowed;"><span class="search-suggestion-text">No hay resultados para "' + searchTerm + '"</span></li>';
         suggestionsContainer.classList.add('active');
         return;
     }
-    
+
     // Mostrar máximo 6 sugerencias
     matches.slice(0, 6).forEach((match, index) => {
         const li = document.createElement('li');
         li.className = 'search-suggestion-item';
         li.dataset.index = index;
-        
+
         // Resaltar el término buscado en la sugerencia (solo en el nombre)
         const highlightedName = match.name.replace(
             new RegExp(`(${searchTerm})`, 'gi'),
             '<strong>$1</strong>'
         );
-        
+
         li.innerHTML = `
             <span class="search-suggestion-icon">🍽️</span>
             <span class="search-suggestion-text">${highlightedName}</span>
             <span style="color:var(--accent); font-weight:600; font-size:0.9rem;">${match.price}</span>
         `;
-        
+
         li.addEventListener('click', () => {
             // Limpiar búsqueda y sugerencias
             searchInput.value = '';
             suggestionsContainer.classList.remove('active');
             suggestionsContainer.innerHTML = '';
-            
+
             // Mostrar todos los items (deshacer cualquier filtro previo)
             menuItems.forEach(item => item.style.display = 'block');
-            
+
             // Scroll suave al platillo seleccionado
             const headerHeight = header.offsetHeight;
             const itemPosition = match.element.getBoundingClientRect().top + window.scrollY;
@@ -244,38 +244,61 @@ function generateSuggestions() {
                 top: itemPosition - headerHeight - 30,
                 behavior: 'smooth'
             });
-            
+
             // Destacar el item brevemente
             match.element.style.boxShadow = '0 0 20px var(--accent)';
             setTimeout(() => {
                 match.element.style.boxShadow = '';
             }, 2000);
         });
-        
+
         suggestionsContainer.appendChild(li);
     });
-    
+
     suggestionsContainer.classList.add('active');
 }
 
 // Ejecutar búsqueda y mostrar resultados (solo buscar en nombres completos)
 function performSearch(searchTerm = null) {
     const term = (searchTerm || searchInput.value).toLowerCase().trim();
-    
+
     menuItems.forEach(item => {
         const name = item.querySelector('h3')?.textContent.toLowerCase() || '';
         const imgElement = item.querySelector('.menu-item-img img');
         const imgSrc = imgElement?.src.trim() || '';
         const price = item.querySelector('.menu-item-price')?.textContent.trim() || '';
-        
+
         // Solo mostrar items que sean válidos (tengan nombre, imagen y precio) y que coincidan por nombre
         const isValid = imgSrc && price;
         const matchesName = name.includes(term);
-        
+
         if (term === '' || (isValid && matchesName)) {
             item.style.display = 'block';
         } else {
             item.style.display = 'none';
+        }
+    });
+
+    // Ocultar categorías vacías
+    document.querySelectorAll('.menu-section').forEach(section => {
+        const visibleItems = Array.from(section.querySelectorAll('.menu-item')).filter(item => item.style.display === 'block');
+        const header = section.querySelector('.section-header');
+        const subsections = section.querySelectorAll('.menu-subsection');
+
+        // Hide subsections if empty
+        subsections.forEach(sub => {
+            const visibleSubItems = Array.from(sub.querySelectorAll('.menu-item')).filter(item => item.style.display === 'block');
+            if (term !== '' && visibleSubItems.length === 0) {
+                sub.style.display = 'none';
+            } else {
+                sub.style.display = 'block';
+            }
+        });
+
+        if (term !== '' && visibleItems.length === 0) {
+            section.style.display = 'none';
+        } else {
+            section.style.display = 'block';
         }
     });
 }
@@ -283,10 +306,10 @@ function performSearch(searchTerm = null) {
 // Navegación por sugerencias con teclado
 if (searchInput) {
     searchInput.addEventListener('input', generateSuggestions);
-    
+
     searchInput.addEventListener('keydown', (e) => {
         const items = suggestionsContainer.querySelectorAll('.search-suggestion-item');
-        
+
         if (e.key === 'ArrowDown') {
             e.preventDefault();
             currentSuggestionIndex = Math.min(currentSuggestionIndex + 1, items.length - 1);
@@ -307,7 +330,7 @@ if (searchInput) {
             suggestionsContainer.classList.remove('active');
         }
     });
-    
+
     // Cerrar sugerencias al hacer clic fuera
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.search-wrapper')) {
@@ -325,14 +348,14 @@ function updateSuggestionSelection(items) {
 if (searchBtn) {
     searchBtn.addEventListener('click', () => {
         const searchTerm = searchInput.value.toLowerCase().trim();
-        
+
         if (searchTerm === '') {
             // Si está vacío, mostrar todos los items
             menuItems.forEach(item => item.style.display = 'block');
         } else {
             performSearch();
         }
-        
+
         searchSuggestions.classList.remove('active');
     });
 }
@@ -342,11 +365,11 @@ document.querySelectorAll('.nav-dropdown-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        
+
         const dropdownId = btn.getAttribute('data-dropdown');
         const dropdown = document.getElementById(dropdownId);
         const icon = btn.querySelector('i');
-        
+
         // Cerrar otros dropdowns
         document.querySelectorAll('.dropdown-menu.active').forEach(menu => {
             if (menu.id !== dropdownId) {
@@ -355,7 +378,7 @@ document.querySelectorAll('.nav-dropdown-btn').forEach(btn => {
                 if (otherBtn) otherBtn.style.transform = 'rotate(0deg)';
             }
         });
-        
+
         // Toggle del dropdown actual
         if (dropdown) {
             const willOpen = !dropdown.classList.contains('active');
@@ -380,12 +403,12 @@ document.querySelectorAll('.nav-dropdown-btn').forEach(btn => {
             if (icon) {
                 icon.style.transform = dropdown.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0deg)';
             }
-            
+
             // Asegurar que el dropdown sea visible (ajustar posición si es necesario)
             if (dropdown.classList.contains('active')) {
                 const dropdownRect = dropdown.getBoundingClientRect();
                 const viewportHeight = window.innerHeight;
-                
+
                 // Si el dropdown se sale de la pantalla hacia abajo
                 if (dropdownRect.bottom > viewportHeight) {
                     dropdown.style.maxHeight = (viewportHeight - dropdownRect.top - 20) + 'px';
@@ -443,10 +466,10 @@ document.querySelectorAll('.menu-item').forEach(item => {
 function highlightActiveSection() {
     const sections = document.querySelectorAll('.menu-section');
     const navLinks = document.querySelectorAll('.nav-link, .dropdown-link');
-    
+
     let current = '';
     const headerHeight = header.offsetHeight;
-    
+
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -454,7 +477,7 @@ function highlightActiveSection() {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         const href = link.getAttribute('href');
@@ -499,125 +522,3 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
-// ===== EFECTOS ESPECIALES PARA ICONOS SOCIALES =====
-document.addEventListener('DOMContentLoaded', function() {
-    const socialIcons = document.querySelectorAll('.social-icon-premium');
-    
-    socialIcons.forEach(icon => {
-        // Efecto de partículas al hacer hover
-        icon.addEventListener('mouseenter', function(e) {
-            createParticles(e, this);
-        });
-        
-        // Efecto de onda al hacer click
-        icon.addEventListener('click', function(e) {
-            createRipple(e, this);
-        });
-        
-        // Efecto de brillo al mover el mouse
-        icon.addEventListener('mousemove', function(e) {
-            createGlowEffect(e, this);
-        });
-    });
-    
-    // Función para crear partículas
-    function createParticles(event, element) {
-        for (let i = 0; i < 8; i++) {
-            const particle = document.createElement('span');
-            particle.className = 'social-particle';
-            
-            const rect = element.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            const angle = (i / 8) * Math.PI * 2;
-            const distance = 30;
-            const tx = Math.cos(angle) * distance;
-            const ty = Math.sin(angle) * distance;
-            
-            particle.style.setProperty('--tx', tx + 'px');
-            particle.style.setProperty('--ty', ty + 'px');
-            particle.style.left = centerX + 'px';
-            particle.style.top = centerY + 'px';
-            
-            // Color según la red social
-            if (element.classList.contains('whatsapp')) {
-                particle.style.background = '#25D366';
-            } else if (element.classList.contains('facebook')) {
-                particle.style.background = '#1877F2';
-            } else if (element.classList.contains('instagram')) {
-                particle.style.background = '#ee2a7b';
-            } else if (element.classList.contains('tiktok')) {
-                particle.style.background = '#25F4EE';
-            }
-            
-            document.body.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.remove();
-            }, 1000);
-        }
-    }
-    
-    // Función para crear efecto de onda
-    function createRipple(event, element) {
-        const ripple = document.createElement('span');
-        ripple.className = 'ripple-effect';
-        
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = (event.clientX - rect.left - size/2) + 'px';
-        ripple.style.top = (event.clientY - rect.top - size/2) + 'px';
-        
-        element.appendChild(ripple);
-        
-        setTimeout(() => {
-            ripple.remove();
-        }, 600);
-    }
-    
-    // Función para efecto de brillo al mover mouse
-    function createGlowEffect(event, element) {
-        const rect = element.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-        
-        element.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%)`;
-        
-        setTimeout(() => {
-            element.style.background = '';
-        }, 100);
-    }
-    
-    // Animación suave de entrada
-    socialIcons.forEach((icon, index) => {
-        icon.style.opacity = '0';
-        icon.style.transform = 'translateX(-20px)';
-        
-        setTimeout(() => {
-            icon.style.transition = 'all 0.5s ease';
-            icon.style.opacity = '1';
-            icon.style.transform = 'translateX(0)';
-        }, 100 + (index * 100));
-    });
-});
-
-// ===== EFECTO DE PARTÍCULAS CONTINUAS (opcional) =====
-setInterval(() => {
-    const icons = document.querySelectorAll('.social-icon-premium');
-    icons.forEach(icon => {
-        if (icon.matches(':hover')) {
-            const event = new MouseEvent('mouseenter', {
-                view: window,
-                bubbles: true,
-                cancelable: true
-            });
-            icon.dispatchEvent(event);
-        }
-    });
-}, 2000);
-
-
-
