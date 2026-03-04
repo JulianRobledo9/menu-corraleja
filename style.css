@@ -50,6 +50,31 @@ body {
 
 /* ===== BOTÓN HAMBURGUESA ===== */
 /* oculto por defecto, estilos globales fuera de body */
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.theme-toggle {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: rotate(20deg);
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+}
+
 .hamburger {
     background: transparent;
     border: none;
@@ -1088,12 +1113,17 @@ body {
         padding-bottom: 10px;
     }
     /* mostrar hamburguesa y ocultar por defecto la navegación */
-    .hamburger {
-        display: block;
-        /* posición fija en esquina para visibilidad inmediata */
+    .header-controls {
+        display: flex;
+        gap: 10px;
+        align-items: center;
         position: absolute;
         top: 15px;
         right: 20px;
+        z-index: 1101;
+    }
+    .hamburger {
+        display: flex;
     }
     .nav-menu {
         overflow-x: visible;

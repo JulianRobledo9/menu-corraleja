@@ -32,12 +32,19 @@
             </div>
 
             <!-- Navegación completa con todos los botones originales -->
-            <!-- Botón hamburguesa para móvil -->
-            <button id="navToggle" class="hamburger" aria-label="Mostrar menú">
-                <!-- FontAwesome icon; fallback char removed to avoid duplicate -->
-                <i class="fas fa-bars"></i>
-                <span class="sr-only">Menú</span>
-            </button>
+            <!-- Contenedor para hamburguesa y botón de tema -->
+            <div class="header-controls">
+                <!-- Botón de modo noche/día -->
+                <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <!-- Botón hamburguesa para móvil -->
+                <button id="navToggle" class="hamburger" aria-label="Mostrar menú">
+                    <!-- FontAwesome icon; fallback char removed to avoid duplicate -->
+                    <i class="fas fa-bars"></i>
+                    <span class="sr-only">Menú</span>
+                </button>
+            </div>
             <nav class="nav-menu">
                 <ul class="nav-list">
                     <!-- Carnes Dropdown -->
@@ -501,7 +508,8 @@
                             <img src="todas la cervesas.png" alt="Cerveza Aguila">
                         </div>
                         <div class="menu-item-content">
-                            <h3>Aguila</h3>
+                            <h3>Cervesas</h3>
+                            <p>aguila,aguila light,costeña,poker</p>
                             <div class="menu-item-footer">
                                 <span class="menu-item-price">$3.500</span>
                             </div>
@@ -523,7 +531,7 @@
 
                     <div class="menu-item">
                         <div class="menu-item-img">
-                            <img src="https://images.unsplash.com/photo-1608270861620-7c40eb2dba0b?auto=format&fit=crop&w=1000&q=80" alt="Cubetazo">
+                            <img src="cubetazo.jpeg" alt="Cubetazo">
                         </div>
                         <div class="menu-item-content">
                             <h3>Cubetazo</h3>
@@ -589,7 +597,7 @@
 
                     <div class="menu-item">
                         <div class="menu-item-img">
-                            <img src="micheladas.png" alt="Michelada">
+                            <img src="michelada.jpeg" alt="Michelada">
                         </div>
                         <div class="menu-item-content">
                             <h3>Michelada cerveza o gaseosa</h3>

@@ -8,6 +8,7 @@ const backToTop = document.getElementById('backToTop');
 const currentYear = document.getElementById('current-year');
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.querySelector('.nav-menu');
+const themeToggle = document.getElementById('themeToggle');
 
 // Elementos de redes sociales
 const whatsappLink = document.getElementById('whatsappLink');
@@ -74,6 +75,27 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollMargin();
     window.addEventListener('resize', updateScrollMargin);
 });
+
+// ===== TOGGLE MODO NOCHE/DÍA =====
+if (themeToggle) {
+    // Cargar tema guardado al cargar la página
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark-mode');
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    // Cambiar tema al hacer clic
+    themeToggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark-mode');
+        
+        const isDarkMode = document.documentElement.classList.contains('dark-mode');
+        themeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        
+        // Guardar preferencia
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+}
 
 // ===== MENÚ HAMBURGUESA =====
 if (navToggle && navMenu) {
