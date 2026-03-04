@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
@@ -7,8 +8,11 @@
     <!-- versionado para evitar caché viejo -->
     <link rel="stylesheet" href="style.css?v=2">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <header class="header" id="header">
         <div class="header-inner">
@@ -22,7 +26,8 @@
             <!-- Barra de búsqueda con autocomplete -->
             <div class="search-wrapper">
                 <div class="search-bar">
-                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar plato, bebida..." autocomplete="off">
+                    <input type="text" class="search-input" id="searchInput" placeholder="Buscar plato, bebida..."
+                        autocomplete="off">
                     <button class="search-btn" id="searchBtn">
                         <i class="fas fa-search"></i>
                     </button>
@@ -38,6 +43,8 @@
                 <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
                     <i class="fas fa-moon"></i>
                 </button>
+
+
                 <!-- Botón hamburguesa para móvil -->
                 <button id="navToggle" class="hamburger" aria-label="Mostrar menú">
                     <!-- FontAwesome icon; fallback char removed to avoid duplicate -->
@@ -59,7 +66,7 @@
                             <li><a class="dropdown-link" href="#pescado">Pescado</a></li>
                         </ul>
                     </li>
-                    
+
                     <!-- Comidas Rápidas Dropdown -->
                     <li class="nav-item-dropdown">
                         <button class="nav-link nav-dropdown-btn" data-dropdown="comidas-rapidas-menu">
@@ -72,12 +79,12 @@
                             <li><a class="dropdown-link" href="#choripapa">Choripapa</a></li>
                         </ul>
                     </li>
-                    
+
                     <!-- Platos típicos -->
                     <li><a class="nav-link" href="#picada">Picada</a></li>
                     <li><a class="nav-link" href="#sancocho">Sancocho</a></li>
                     <li><a class="nav-link" href="#gallina">Gallina</a></li>
-                    
+
                     <!-- Bebidas Dropdown -->
                     <li class="nav-item-dropdown">
                         <button class="nav-link nav-dropdown-btn" data-dropdown="bebidas-menu">
@@ -92,7 +99,7 @@
                             <li><a class="dropdown-link" href="#licores-botellos">Licores (botellos)</a></li>
                         </ul>
                     </li>
-                    
+
                     <!-- Paquetes Dropdown -->
                     <li class="nav-item-dropdown">
                         <button class="nav-link nav-dropdown-btn" data-dropdown="paquetes-menu">
@@ -113,32 +120,28 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-<!-- Iconos Sociales Premium -->
-<div class="social-icons-premium">
-    <!-- WhatsApp -->
-    <a id="whatsappLink" href="https://wa.me/573204963882?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios" class="social-icon-premium whatsapp" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-whatsapp"></i>
-        <span class="social-tooltip">WhatsApp</span>
-    </a>
-    
-    <!-- Facebook -->
-    <a id="facebookLink" href="https://www.facebook.com/share/1BtHn71958/?mibextid=wwXIfr" class="social-icon-premium facebook" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-facebook-f"></i>
-        <span class="social-tooltip">Facebook</span>
-    </a>
-    
-    <!-- Instagram -->
-    <a id="instagramLink" href="https://www.instagram.com/lacorraleja.granada?igsh=NmVxejllNnZiN2Vo" class="social-icon-premium instagram" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-instagram"></i>
-        <span class="social-tooltip">Instagram</span>
-    </a>
-    
-    <!-- TikTok -->
-    <a id="tiktokLink" href="https://tiktok.com/@lacorraleja.granada?_t=ZS-8wLhqGJxH7v&_r=1" class="social-icon-premium tiktok" target="_blank" rel="noopener noreferrer">
-        <i class="fab fa-tiktok"></i>
-        <span class="social-tooltip">TikTok</span>
-    </a>
-</div>
+    <!-- Sidebar Redes Sociales -->
+    <div class="social-sidebar">
+        <a id="whatsappLink"
+            href="https://wa.me/573204963882?text=Hola,%20quiero%20informaci%C3%B3n%20sobre%20sus%20servicios"
+            class="social-sidebar-icon whatsapp" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a id="facebookLink" href="https://www.facebook.com/share/1BtHn71958/?mibextid=wwXIfr"
+            class="social-sidebar-icon facebook" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a id="instagramLink" href="https://www.instagram.com/lacorraleja.granada?igsh=NmVxejllNnZiN2Vo"
+            class="social-sidebar-icon instagram" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a id="tiktokLink" href="https://tiktok.com/@lacorraleja.granada?_t=ZS-8wLhqGJxH7v&_r=1"
+            class="social-sidebar-icon tiktok" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-tiktok"></i>
+        </a>
+    </div>
+
+
 
     <main class="menu-container" id="menuContainer">
 
@@ -177,7 +180,8 @@
 
                 <div class="menu-item">
                     <div class="menu-item-img">
-                        <img src="https://i.pinimg.com/originals/20/c2/51/20c2517c0d347a3c7d7c28ebb571b403.jpg" alt="Carne al barril">
+                        <img src="https://i.pinimg.com/originals/20/c2/51/20c2517c0d347a3c7d7c28ebb571b403.jpg"
+                            alt="Carne al barril">
                     </div>
                     <div class="menu-item-content">
                         <h3>Carne al barril</h3>
@@ -318,7 +322,8 @@
 
                 <div class="menu-item">
                     <div class="menu-item-img">
-                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80" alt="Mojarra en salsa">
+                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80"
+                            alt="Mojarra en salsa">
                     </div>
                     <div class="menu-item-content">
                         <h3>Mojarra en salsa</h3>
@@ -331,7 +336,8 @@
 
                 <div class="menu-item">
                     <div class="menu-item-img">
-                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80" alt="Amarillo frito">
+                        <img src="https://images.unsplash.com/photo-1612203985729-70726954388c?auto=format&fit=crop&w=1000&q=80"
+                            alt="Amarillo frito">
                     </div>
                     <div class="menu-item-content">
                         <h3>Amarillo frito</h3>
@@ -365,11 +371,11 @@
             <div class="menu-items">
                 <div class="menu-item" id="hamburguesa-carne">
                     <div class="menu-item-img">
-                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1000&q=80" alt="Hamburguesa de carne">
+                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?auto=format&fit=crop&w=1000&q=80"
+                            alt="Hamburguesa de carne">
                     </div>
                     <div class="menu-item-content">
                         <h3>Hamburguesa de carne</h3>
-                        <p></p>
                         <div class="menu-item-footer">
                             <span class="menu-item-price">$15.000</span>
                         </div>
@@ -382,7 +388,6 @@
                     </div>
                     <div class="menu-item-content">
                         <h3>Salchipapa</h3>
-                        <p></p>
                         <div class="menu-item-footer">
                             <span class="menu-item-price">$13.000</span>
                         </div>
@@ -395,7 +400,6 @@
                     </div>
                     <div class="menu-item-content">
                         <h3>Suizo</h3>
-                        <p></p>
                         <div class="menu-item-footer">
                             <span class="menu-item-price">$15.000</span>
                         </div>
@@ -404,11 +408,11 @@
 
                 <div class="menu-item" id="choripapa">
                     <div class="menu-item-img">
-                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80" alt="Chori papa">
+                        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80"
+                            alt="Chori papa">
                     </div>
                     <div class="menu-item-content">
                         <h3>Chori papa</h3>
-                        <p></p>
                         <div class="menu-item-footer">
                             <span class="menu-item-price">$15.000</span>
                         </div>
@@ -429,7 +433,8 @@
                     </div>
                     <div class="menu-item-content">
                         <h3>Picada (2) Personas</h3>
-                        <p>Carne de res, cerdo, pollo, chorizo, papa a la francesa, plátano chips, cebolla caramelizada</p>
+                        <p>Carne de res, cerdo, pollo, chorizo, papa a la francesa, plátano chips, cebolla caramelizada
+                        </p>
                         <div class="menu-item-footer">
                             <span class="menu-item-price">$35.000</span>
                         </div>
@@ -446,7 +451,8 @@
             <div class="menu-items">
                 <div class="menu-item">
                     <div class="menu-item-img">
-                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80" alt="Sancocho">
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80"
+                            alt="Sancocho">
                     </div>
                     <div class="menu-item-content">
                         <h3>Sancocho de hueso de res</h3>
@@ -471,7 +477,8 @@
                     </div>
                     <div class="menu-item-content">
                         <h3>Piquete gallina ponedora</h3>
-                        <p>Guacamole, arroz, papa, yuca en guiso criollo, cuatro tazas de consomé (domingos y festivos)</p>
+                        <p>Guacamole, arroz, papa, yuca en guiso criollo, cuatro tazas de consomé (domingos y festivos)
+                        </p>
                         <div class="menu-item-footer">
                             <span class="menu-item-price">$70.000</span>
                         </div>
@@ -498,7 +505,7 @@
             <div class="section-header">
                 <h2>Bebidas</h2>
             </div>
-            
+
             <!-- CERVEZAS -->
             <div class="menu-subsection" id="cervezas">
                 <h3>Cervezas</h3>
@@ -508,8 +515,8 @@
                             <img src="todas la cervesas.png" alt="Cerveza Aguila">
                         </div>
                         <div class="menu-item-content">
-                            <h3>Cervesas</h3>
-                            <p>aguila,aguila light,costeña,poker</p>
+                            <h3>Cervezas</h3>
+                            <p>Aguila, Aguila Light, Costeña, Poker</p>
                             <div class="menu-item-footer">
                                 <span class="menu-item-price">$3.500</span>
                             </div>
@@ -760,7 +767,8 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-img">
-                            <img src="paquetes.png" alt="Paquetes grandes - Detoditos, Doritos, Margarita, Choclitos, Cheetos">
+                            <img src="paquetes.png"
+                                alt="Paquetes grandes - Detoditos, Doritos, Margarita, Choclitos, Cheetos">
                         </div>
                         <div class="menu-item-content">
                             <h3>Paquetes grandes</h3>
@@ -779,11 +787,13 @@
                 <div class="menu-items">
                     <div class="menu-item">
                         <div class="menu-item-img">
-                            <img src="paquetes.png" alt="Paquetes pequeños - Detoditos, Margarita, Doritos, Cheetos, Choclitos">
+                            <img src="paquetes.png"
+                                alt="Paquetes pequeños - Detoditos, Margarita, Doritos, Cheetos, Choclitos">
                         </div>
                         <div class="menu-item-content">
                             <h3>Pequeños</h3>
-                            <p>Detoditos (amarillo, azul, rojo), margaritas de pollo, doritos, margaritas de tomate, choclitos, boliquesos, cheetos (amarillo, rojo), cheese tris</p>
+                            <p>Detoditos (amarillo, azul, rojo), margaritas de pollo, doritos, margaritas de tomate,
+                                choclitos, boliquesos, cheetos (amarillo, rojo), cheese tris</p>
                             <div class="menu-item-footer">
                                 <span class="menu-item-price">$3.500</span>
                             </div>
@@ -804,20 +814,20 @@
                     <p><i class="fas fa-clock"></i> Horario: 24/7</p>
                 </div>
                 <div class="footer-social">
-                    <a id="footerFacebookLink" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
-                    <a id="footerInstagramLink" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-                    <a id="footerWhatsappLink" href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    <a id="footerFacebookLink" href="#" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-facebook"></i></a>
+                    <a id="footerInstagramLink" href="#" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-instagram"></i></a>
+                    <a id="footerWhatsappLink" href="#" target="_blank" rel="noopener noreferrer"><i
+                            class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
-            <p class="copyright">&copy; <span id="current-year"></span> RESTAURANTE LA CORRALEJA. Todos los derechos reservados.</p>
+            <p class="copyright">&copy; <span id="current-year"></span> RESTAURANTE LA CORRALEJA. Todos los derechos
+                reservados.</p>
         </div>
     </footer>
 
     <script src="app.js?v=2"></script>
 </body>
+
 </html>
-
-
-
-
-
